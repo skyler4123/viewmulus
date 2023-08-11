@@ -1,7 +1,20 @@
 <div class="p-5">
   <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
   
-  <%= render(Tab::TabComponent.new) %>
+  <%= render(Tab::TabComponent.new) do %>
+    <%= render(Tab::HeaderComponent.new)  do %>
+      <%= render(Tab::HeadComponent.new) %>
+      <%= render(Tab::HeadComponent.new) %>
+      <%= render(Tab::HeadComponent.new) %>
+      <%= render(Tab::HeadComponent.new) %>
+    <% end %>
+    <%= render(Tab::ContentsComponent.new) do %>
+      <%= render(Tab::ContentComponent.new) %>
+      <%= render(Tab::ContentComponent.new) %>
+      <%= render(Tab::ContentComponent.new) %>
+      <%= render(Tab::ContentComponent.new) %>
+    <% end %>
+  <% end %>
 
   <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
 
