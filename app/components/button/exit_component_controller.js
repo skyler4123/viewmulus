@@ -4,12 +4,21 @@ export default class extends Controller {
   static values = {
     exitType: String
   }
+
+  connect() {
+    // console.log(this.exitTypeValue)
+  }
+
   exit() {
-    console.log(this.element)
-    // switch(this.exitTypeValue) {
-    //   case "modal":
-    //     this.element.closest('[data-controller="modal--modal-component"]').classList.add('hidden')
-    //     break;
-    // }
+    switch(this.exitTypeValue) {
+      case "modal":
+        this.element.closest('[data-controller="modal--modal-component"]')?.classList.add('hidden')
+        break;
+      case "card":
+        this.element.closest('[data-controller="card--card-component"]')?.classList.add('hidden')
+        break;
+      default:
+        this.element.parentNode.closest("[data-controller]")?.classList.add('hidden')
+    }
   }
 }
