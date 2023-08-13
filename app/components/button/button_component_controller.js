@@ -1,21 +1,25 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ['modal']
   static values = {
-    hasModal: Boolean,
+    hasModal: { type: Boolean, default: false }
   }
 
   initialize() {
-    if (this.hasModalValue) {
+    if (this.modalElement()) {
+      this.hasModalValue = true
       this.element.setAttribute('data-action', "click->button--button-component#openModal")
-      this.element.querySelector('div[data-controller="modal--modal-component"]').setAttribute('data-button--button-component-target', 'modal')
     }
   }
   connect() {
-    console.log(this.element)
+    // console.log(this.element)
+  }
+  modalElement() {
+    const modalElement = this.element.querySelector('[data-controller="modal--modal-component"]')
+    return modalElement
   }
   openModal() {
-    this.modalTarget.classList.remove('hidden')
+    this.modalElement().classList.remove('hidden')
+    // this.modalElement().removeAttribute('style')
   }
 }

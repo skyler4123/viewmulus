@@ -1,12 +1,43 @@
 <div class="p-5">
   <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
 
-  <%= render(Card::CardComponent.new) do %>
-    <div>hahahahah</div>
-    <div>hahahahah</div>
-    <%= render(Button::ExitComponent.new) %>
-  <% end %>
-
   <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
-
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+    <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <div>gsakjdlksajdlsakdlkjsalkdjsalkjdlasjlds</div>
+  <%= render(Button::ButtonComponent.new) do |component |%>
+    <% component.with_modal do %>
+      <%= render(Modal::ModalComponent.new) do %>
+        <%= render(Card::CardComponent.new) do %>
+          <div class="bg-red-600">Modal hERE</div>
+          <%= render(Button::ExitComponent.new(exit_type: :modal)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
+
