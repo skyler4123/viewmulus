@@ -1,1 +1,3 @@
-<%= render(Progress::BarComponent.new) %>
+<%= render(Button::ButtonComponent.new) do |component| %>
+  <%= component.with_indicator { render(Indicator::DotComponent.new) } %>
+<% end %>
