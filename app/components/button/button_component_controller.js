@@ -14,12 +14,10 @@ export default class extends Controller {
   connect() {
     // console.log(this.element)
   }
-  modalElement() {
-    const modalElement = this.element.querySelector('[data-controller="modal--modal-component"]')
-    return modalElement
-  }
+
   openModal() {
-    this.modalElement().classList.remove('hidden')
+    const modalElement = this.element.querySelector('[data-controller="modal--modal-component"]')
+    modalElement.classList.remove('hidden')
     // this.modalElement().removeAttribute('style')
   }
 }
