@@ -6,7 +6,7 @@ export default class extends Controller {
   }
 
   initialize() {
-    if (this.modalElement()) {
+    if (this.element.querySelector('[data-controller="modal--modal-component"]')) {
       this.hasModalValue = true
       this.element.setAttribute('data-action', "click->button--button-component#openModal")
     }
@@ -18,6 +18,7 @@ export default class extends Controller {
   openModal() {
     const modalElement = this.element.querySelector('[data-controller="modal--modal-component"]')
     modalElement.classList.remove('hidden')
-    // this.modalElement().removeAttribute('style')
+    modalElement.classList.add('flex')
+
   }
 }

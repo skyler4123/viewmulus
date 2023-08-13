@@ -1,5 +1,10 @@
-<%= render(Dropdown::HoverComponent.new) %>
-<%= render(Dropdown::ClickComponent.new) %>
-
-<button class="text-red-500 focus:text-violet-600 peer">jhakjhkajh</button>
-<button class="text-red-500 peer-focus:text-green-600">jhakjhkajh</button>
+<%= render(Button::ButtonComponent.new) do |component| %>
+  <%= component.with_modal { render(Modal::ModalComponent.new) } %>
+  <%= component.with_popover do %>
+    <%= render(Popover::LeftComponent.new) do %>
+      <div>ksahkjhsaklfjakljflkadjlk</div>
+      <div>lkjslkjsadkljasld</div>
+      <div>,znm,zn,cmxbmcbm,</div>
+    <% end %>
+  <% end %>
+<% end %>

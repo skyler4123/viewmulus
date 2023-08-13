@@ -4,4 +4,7 @@ export default class extends Controller {
   connect() {
     // console.log("Hello, Stimulus!", this.element);
   }
+  initialize() {
+    this.element.parentNode.closest('[data-controller]').classList.add('relative', 'group')
+  }
 }
