@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+ActiveRecord::Base.transaction do
+  5.times do
+    User.create!(email: Faker::Internet.email, password: "password", password_confirmation: "password")
+  end
+  10.times do
+    User.all.sample.posts.create!(content: Faker::Quote.famous_last_words)
+  end
+end

@@ -101,14 +101,23 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.2)
     base64 (0.1.1)
     bcrypt (3.1.19)
+    better_html (2.0.2)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    constant_resolver (0.2.0)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -127,6 +136,11 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    graphwerk (1.2.1)
+      activesupport
+      packwerk
+      ruby-graphviz
+      sorbet-runtime
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -168,6 +182,20 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    packwerk (3.1.0)
+      activesupport (>= 6.0)
+      ast
+      better_html
+      bundler
+      constant_resolver (>= 0.2.0)
+      parallel
+      parser
+      sorbet-runtime (>= 0.5.9914)
+      zeitwerk (>= 2.6.1)
+    parallel (1.23.0)
+    parser (3.2.2.3)
+      ast (~> 2.4.1)
+      racc
     puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -193,9 +221,14 @@ GEM
       connection_pool
     reline (0.3.7)
       io-console (~> 0.5)
+    rexml (3.2.6)
+    ruby-graphviz (1.2.5)
+      rexml
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    smart_properties (1.17.0)
+    sorbet-runtime (0.5.10962)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -241,9 +274,11 @@ DEPENDENCIES
   dotenv-rails
   error_highlight (>= 0.4.0)
   faker
+  graphwerk
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  packwerk
   puma (>= 5.0)
   rails!
   redis (>= 4.0.1)

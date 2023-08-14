@@ -68,3 +68,5 @@ group :development do
 end
 
 gem "view_component"
+gem "packwerk"
+gem "graphwerk"
