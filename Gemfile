@@ -70,3 +70,4 @@ end
 gem "view_component"
 gem "packwerk"
 gem "graphwerk"
+gem "jwt"
