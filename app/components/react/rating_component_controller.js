@@ -10,9 +10,6 @@ export default class extends Controller {
     numberOfStar: { type: Number, default: 5 },
     ratePoint: { type: Number, default: 0 }
   }
-  connect() {
-    // console.log(starNode);
-  }
 
   initialize() {
     this.element.querySelector('input').setAttribute('data-react--rating-component-target', 'input')
@@ -25,7 +22,6 @@ export default class extends Controller {
       svgNode.setAttribute('data-action', "click->react--rating-component#rate")
       svgNode.setAttribute('data-react--rating-component-rate-param', index + 1)
     })
-    
   }
 
   rate(event) {
@@ -35,8 +31,6 @@ export default class extends Controller {
   ratePointValueChanged() {
     this.inputTarget.value = this.ratePointValue
     this.rateTargets.forEach((rate, index) => {
-      console.log(index)
-      console.log(this.ratePointValue)
       if (index < this.ratePointValue) {
         rate.classList.replace('text-white', 'text-yellow-300')
       } else {
