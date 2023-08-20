@@ -9,12 +9,12 @@ module JsonWebToken
 
   sig {params(user: User, expire: DateTime, secret: String, algorithm: String).returns(String)}
   def self.encode(user:, expire: JWT_EXPIRATION.to_i.minutes.from_now, secret: JWT_SECRET, algorithm: JWT_ALGORITHM)
-    expire = expire.to_i
+    expire_epochtime = expire.to_i
     payload = {
       id: user.id,
       email: user.email,
       role: user.try(:role),
-      exp: expire
+      exp: expire_epochtime
     }
     JWT.encode(payload, secret, algorithm)
   end
