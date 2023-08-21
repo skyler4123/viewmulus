@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get "signin", to: 'sessions#new'
+  get "signin", to: 'sessions#signin'
   post  "signin",to: 'sessions#create'
   delete "signout", to: 'sessions#destroy'
+  get "signup", to: "sessions#signup"
+  post "signup", to: "users#create"
   resources :posts
   resources :users
   resources :demos

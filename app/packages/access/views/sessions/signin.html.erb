@@ -1,0 +1,10 @@
+<%= render(Form::SessionComponent.new(url: signin_path, method: :post, class: "flex flex-col justify-center items-center gap-y-5")) do %>
+  <div class="font-bold text-lg text-gray-900">Welcome back!</div>
+  <%= render(Input::TextComponent.new(label: "Email", name: "email", placeholder: "example@gmail.com", type: "email")) %>
+  <%= render(Input::PasswordComponent.new(label: "Password")) %>
+  <%= render(Input::SubmitComponent.new(label: "Sign In")) %>
+  <nav class="text-sm">
+    Don't have an account? <%= link_to("Sign Up", signup_path, class: "text-blue-600") %>
+  </nav>
+<% end %>
+
