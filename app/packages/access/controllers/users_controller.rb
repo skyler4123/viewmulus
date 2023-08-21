@@ -31,8 +31,7 @@ class UsersController < ApplicationController
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { redirect_to signup_path, status: :unprocessable_entity }
-        flash.now[:notice] = "Quote was successfully created."
+        format.html { redirect_to request.referer, notice: "Failed! Something wrong!" }
       end
     end
   end
