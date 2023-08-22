@@ -11,9 +11,105 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-10 flex">
-      <%= yield %>
-    </main>
+  <body class="flex flex-col bg-slate-300">
+    <%= render(Body::HeaderComponent.new) do %>
+      <%= render(Navbar::StickyComponent.new) do |component| %>
+        <% component.with_banner do %>
+          <%= render(Banner::TopComponent.new(klass: "flex justify-between w-full p-4 bg-neutral-800 dark:bg-gray-700 dark:border-gray-600", content_class: "flex items-center mx-auto text-white underline")) %>
+        <% end %>
+        <% component.with_navbar do %>
+          <div class="flex flex-row justify-between p-2 bg-green-500">
+            <div class="">Logo</div>
+            <div class="">Nav</div>
+            <div class="">Login</div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= render(Body::MainComponent.new) do %>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+      <div>Main Content</div>
+    <% end %>
+    <%= render(Body::FooterComponent.new) do %>
+      <div>Footer Content</div>
+    <% end %>
   </body>
 </html>

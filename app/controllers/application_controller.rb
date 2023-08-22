@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   append_view_path(Dir.glob(Rails.root.join('app/packages/*/views')))
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def current_user
     return nil if session[:access_token].nil?

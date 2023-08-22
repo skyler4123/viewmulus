@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:signin, :create, :signup, :omniauth]
+  # skip_before_action :authenticate_user!, only: [:signin, :create, :signup, :omniauth]
 
   def signin
   end
