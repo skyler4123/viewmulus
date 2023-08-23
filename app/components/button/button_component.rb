@@ -6,7 +6,9 @@ class Button::ButtonComponent < ViewComponent::Base
   renders_one :modal
   renders_one :popover
   renders_one :indicator
-  def initialize(label: 'Button')
+  def initialize(label: 'Button', klass: nil, button_class: nil)
     @label = label
+    @klass = klass
+    @button_class = button_class
   end
 end
