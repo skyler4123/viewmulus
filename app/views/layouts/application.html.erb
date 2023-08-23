@@ -12,6 +12,9 @@
   </head>
 
   <body class="flex flex-col bg-slate-300">
+    <%= render(Button::StickyRightComponent.new) do %>
+      <div>Main Content</div>
+    <% end %>
     <%= render(Body::HeaderComponent.new) do %>
       <%= render(Navbar::StickyComponent.new) do |component| %>
         <% component.with_banner do %>
@@ -46,27 +49,27 @@
               <% end %>
             </div>
             <div class="flex flex-row justify-center items-center gap-x-2">
-              <%= render(Button::LinkComponent.new(label: "SHOP" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "MEMBERSHIP" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "COMFORT" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "TECHNOLOGY" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "SUSTAINABILITY" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "SUPPORT" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
-              <%= render(Button::LinkComponent.new(label: "ABOUT US" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "SHOP" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "MEMBERSHIP" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "COMFORT" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "TECHNOLOGY" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "SUSTAINABILITY" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "SUPPORT" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
+              <%= render(LinkComponent.new(label: "ABOUT US" ,button_class: "font-light hover:text-sky-800 font-medium text-lg text-center active:scale-[0.99] hover:scale-105 duration-100")) %>
 
             </div>
             <div class="flex gap-x-1">
-              <%= render(Button::ButtonComponent.new(button_class: "")) do %>
+              <%= render(ButtonComponent.new(button_class: "")) do %>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
               <% end %>
-              <%= render(Button::LinkComponent.new) do %>
+              <%= render(LinkComponent.new) do %>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
               <% end %>
-              <%= render(Button::LinkComponent.new) do %>
+              <%= render(LinkComponent.new) do %>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
