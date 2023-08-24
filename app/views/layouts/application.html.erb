@@ -83,9 +83,14 @@
     <%= render(Banner::BottomComponent.new) %>
     <%= render(Body::MainComponent.new) do %>
 
-
-
-
+      <%= render(Carousel::CarouselComponent.new) %>
+      <marquee>Đây là một ví dụ về html marquee </marquee>
+      <%= tag.details(class: "text-red-500", data: {controller: "hahaha",component_target: "button-target"}) do %>
+        <div>Main ContentMain ContentMain ContentMain ContentMain ContentMain ContentMain Content</div>
+        <div>Main Content</div>
+        <div>Main Content</div>
+        <div>Main Content</div>
+      <% end %>
       <div>Main Content</div>
       <div>Main Content</div>
       <div>Main Content</div>
