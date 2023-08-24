@@ -9,6 +9,8 @@ export default class extends Controller {
     // console.log("Hello, Stimulus!", this.element);
   }
   initialize() {
-    var sortable = Sortable.create(this.element)
+    if (this.sortableValue) {
+      var sortElement = Sortable.create(this.element)
+    }
   }
 }
