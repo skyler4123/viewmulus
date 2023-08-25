@@ -80,16 +80,65 @@
     <% end %>
     
     <%= render(Body::MainComponent.new(klass: "flex flex-col justify-center")) do %>
+    <!--##############################################################-->
 
-      <div>Content Demo</div>
-      <div>Content Demo</div>
-      <div>Content Demo</div>
-      <div>Content Demo</div>
-      <div>Content Demo</div>
 
-      <%= render(List::OlComponent.new(sortable: true)) %>
 
-      <%= render(DemoComponent.new) %>
+<%= render(Grid::MasonryComponent.new) do |component| %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <%= render(LinkComponent.new(url: "https://www.youtube.com/watch?v=46HwR0xeUCo")) do %>
+      <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+    <% end %>
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" class="w-full h-full object-right" src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/01/good-nature-homepage-hero_2-scaled.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg">
+  <% end %>
+  <%= component.with_item do %>
+    <img class="rounded-xl" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg">
+  <% end %>
+  
+<% end %>
+
+
+
+
+    <!--##############################################################-->
     <% end %>
     <%= render(Banner::BottomComponent.new) %>
     <%= render(Body::FooterComponent.new) do %>
