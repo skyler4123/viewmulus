@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">  
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -87,9 +87,11 @@
 
       <!--##############################################################-->
 
-
-
-      <%= render(React::SummaryRatingComponent.new) %>
+      <%= render(Input::TimeComponent.new(options: {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+      })) %>
 
 
 
