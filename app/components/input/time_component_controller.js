@@ -7,7 +7,6 @@ export default class extends Controller {
     options: { type: Object, default: {} }
   }
   connect() {
-    console.log(this.optionsValue);
     flatpickr(this.inputTarget, this.optionsValue)
   }
 }
