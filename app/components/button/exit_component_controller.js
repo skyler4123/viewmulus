@@ -18,6 +18,9 @@ export default class extends Controller {
       case "card":
         this.element.closest('[data-controller="card--card-component"]')?.classList.add('hidden')
         break;
+      case "boxchat":
+        this.element.closest('[data-controller="boxchat--form-component"]')?.classList.add('hidden')
+        break;
       default:
         this.element.parentNode.closest("[data-controller]")?.classList.add('hidden')
     }

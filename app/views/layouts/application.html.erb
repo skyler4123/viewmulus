@@ -87,25 +87,17 @@
 
       <!--##############################################################-->
 
-      <%= render(Input::RangeComponent.new) %>
-
-
-
-<label for="small-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Small range</label>
-<input id="small-range" type="range" value="50" class="w-full h-1 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700">
-
-<label for="medium-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Default range</label>
-<input id="medium-range" type="range" value="50" class="w-full h-2 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-
-<label for="large-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Large range</label>
-<input id="large-range" type="range" value="50" class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg dark:bg-gray-700">
-
+      <%= render(Boxchat::FormComponent.new) do  |component| %>
+        <% component.with_messages do %>
+          <%= render(Boxchat::MessagesComponent.new) %>
+        <% end %>
+      <% end %>
 
 
 
     <!--##############################################################-->
     <% end %>
-    <%= render(Banner::BottomComponent.new) %>
+
     <%= render(Body::FooterComponent.new) do %>
       <div>Footer Content</div>
     <% end %>
