@@ -93,8 +93,11 @@
         <% end %>
       <% end %>
 
+      <%= render(Boxchat::MessageComponent.new) %>
 
-
+      <%= turbo_frame_tag(User.first) do %>
+        <%= link_to "User 1", "/users/1" %>
+      <% end %>
     <!--##############################################################-->
     <% end %>
 
