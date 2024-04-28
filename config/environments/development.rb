@@ -73,4 +73,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+
+
+
+  config.importmap.cache_sweepers << Rails.root.join("app/components")
+  config.assets.debug = true
+
 end
