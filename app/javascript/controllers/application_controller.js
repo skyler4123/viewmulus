@@ -1,12 +1,14 @@
-import * as Helpers from "./helpers"
+// import * as Helpers from "./helpers"
 import * as DomHelpers from "./dom_helpers"
 import Api from "./api"
 import "axios";
 import { v4 as uuidv4 } from "uuid"
 import { twMerge } from 'tailwind-merge'
 import { Controller } from "@hotwired/stimulus"
+import DataHelpers from "./data_helpers";
 
 export default class ApplicationController extends Controller {
+
   static values = {
     params: { type: Object },
     isOpen: { type: Boolean },
@@ -14,6 +16,7 @@ export default class ApplicationController extends Controller {
     isActive: { type: Boolean },
     isHover: { type: Boolean }
   }
+
   initialize() {
     this.paramsValue = this.camelizeParamsValue(this.paramsValue)
     this.initializeController()
@@ -47,7 +50,7 @@ export default class ApplicationController extends Controller {
       this.element.setAttribute('dir', this.dirParams)
     }
   }
-  
+
   initializeComplete() {
     this.initializeClass()
     this.initializeAction()
@@ -302,123 +305,123 @@ export default class ApplicationController extends Controller {
     this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rating'), controller: this } } })
   }
 
-  camelizeParamsValue(object) {
-    return Helpers.camelizeParamsValue(object)
-  }
+  // camelizeParamsValue(object) {
+  //   return Helpers.camelizeParamsValue(object)
+  // }
 
-  camelCaseForObjectKey(object, except) {
-    return Helpers.camelCaseForObjectKey(object, except)
-  }
+  // camelCaseForObjectKey(object, except) {
+  //   return Helpers.camelCaseForObjectKey(object, except)
+  // }
 
-  camelCaseForObjectKeyAndValue(object, except) {
-    return Helpers.camelCaseForObjectKeyAndValue(object, except)
-  }
+  // camelCaseForObjectKeyAndValue(object, except) {
+  //   return Helpers.camelCaseForObjectKeyAndValue(object, except)
+  // }
 
-  snakeCaseForObjectKey(object, except) {
-    return Helpers.snakeCaseForObjectKey(object, except)
-  }
+  // snakeCaseForObjectKey(object, except) {
+  //   return Helpers.snakeCaseForObjectKey(object, except)
+  // }
 
-  snakeCaseForObjectKeyAndValue(object, except) {
-    return Helpers.snakeCaseForObjectKeyAndValue(object, except)
-  }
+  // snakeCaseForObjectKeyAndValue(object, except) {
+  //   return Helpers.snakeCaseForObjectKeyAndValue(object, except)
+  // }
 
-  camelCaseForArray(array, exceptIndex) {
-    return Helpers.camelCaseForArray(array, exceptIndex)
-  }
+  // camelCaseForArray(array, exceptIndex) {
+  //   return Helpers.camelCaseForArray(array, exceptIndex)
+  // }
 
-  snakeCaseForArray(array, exceptIndex) {
-    return Helpers.snakeCaseForArray(array, exceptIndex)
-  }
+  // snakeCaseForArray(array, exceptIndex) {
+  //   return Helpers.snakeCaseForArray(array, exceptIndex)
+  // }
 
-  toSnakeCase(string) {
-    return Helpers.toSnakeCase(string)
-  }
+  // toSnakeCase(string) {
+  //   return Helpers.toSnakeCase(string)
+  // }
 
-  toCamelCase(string) {
-    return Helpers.toCamelCase(string)
-  }
+  // toCamelCase(string) {
+  //   return Helpers.toCamelCase(string)
+  // }
 
-  toPascalCase(string) {
-    return Helpers.toPascalCase(string)
-  }
+  // toPascalCase(string) {
+  //   return Helpers.toPascalCase(string)
+  // }
 
-  toKebabCase(string) {
-    return Helpers.toKebabCase(string)
-  }
-  toTitleCase(string) {
-    return Helpers.toTitleCase(string)
-  }
-  toSentenceCase(string) {
-    return Helpers.toSentenceCase(string)
-  }
-  convertCase(string, toCase = 'camel') {
-    return Helpers.convertCase(string, toCase)
-  }
+  // toKebabCase(string) {
+  //   return Helpers.toKebabCase(string)
+  // }
+  // toTitleCase(string) {
+  //   return Helpers.toTitleCase(string)
+  // }
+  // toSentenceCase(string) {
+  //   return Helpers.toSentenceCase(string)
+  // }
+  // convertCase(string, toCase = 'camel') {
+  //   return Helpers.convertCase(string, toCase)
+  // }
 
   twMerge(...args) {
     return twMerge(...args)
   }
 
-  changeObjectKey(object, oldKey, newKey) {
-    return Helpers.changeObjectKey(object, oldKey, newKey)
-  }
+  // changeObjectKey(object, oldKey, newKey) {
+  //   return Helpers.changeObjectKey(object, oldKey, newKey)
+  // }
 
-  deleteObjectKey(object, condition) {
-    return Helpers.deleteObjectKey(object, condition)
-  }
+  // deleteObjectKey(object, condition) {
+  //   return Helpers.deleteObjectKey(object, condition)
+  // }
 
-  objectOnlyKeys(object, keys) {
-    return Helpers.objectOnlyKeys(object, keys)
-  }
+  // objectOnlyKeys(object, keys) {
+  //   return Helpers.objectOnlyKeys(object, keys)
+  // }
 
-  isObject(x) {
-    return Helpers.isObject(x)
-  }
+  // isObject(x) {
+  //   return Helpers.isObject(x)
+  // }
 
-  isObjectEmpty(object) {
-    return Helpers.isObjectEmpty(object)
-  }
+  // isObjectEmpty(object) {
+  //   return Helpers.isObjectEmpty(object)
+  // }
 
-  isString(x) {
-    return Helpers.isString(x)
-  }
+  // isString(x) {
+  //   return Helpers.isString(x)
+  // }
 
-  isDefined(x) {
-    return Helpers.isDefined(x)
-  }
+  // isDefined(x) {
+  //   return Helpers.isDefined(x)
+  // }
 
-  isUndefined(x) {
-    return Helpers.isUndefined(x)
-  }
+  // isUndefined(x) {
+  //   return Helpers.isUndefined(x)
+  // }
 
-  isArray(x) {
-    return Helpers.isArray(x)
-  }
+  // isArray(x) {
+  //   return Helpers.isArray(x)
+  // }
 
-  getKeyEndWith(object, string) {
-    return Helpers.getKeyEndWith(object, string)
-  }
-  isArrayHasNull(array) {
-    return Helpers.isArrayHasNull(array)
-  }
-  isArraytNull(array) {
-    return Helpers.isArraytNull(array)
-  }
-  isObjectHasNull(object) {
-    return Helpers.isObjectHasNull(object)
-  }
-  isObjectNull(object) {
-    return Helpers.isObjectNull(object)
-  }
-  getChildObjectByKeys(object, keys) {
-    return Helpers.getChildObjectByKeys(object, keys)
-  }
-  sortNumberArray(array) {
-    return Helpers.sortNumberArray(array)
-  }
-  sortReverseNumberArray(array) {
-    return Helpers.sortReverseNumberArray(array)
-  }
+  // getKeyEndWith(object, string) {
+  //   return Helpers.getKeyEndWith(object, string)
+  // }
+  // isArrayHasNull(array) {
+  //   return Helpers.isArrayHasNull(array)
+  // }
+  // isArraytNull(array) {
+  //   return Helpers.isArraytNull(array)
+  // }
+  // isObjectHasNull(object) {
+  //   return Helpers.isObjectHasNull(object)
+  // }
+  // isObjectNull(object) {
+  //   return Helpers.isObjectNull(object)
+  // }
+  // getChildObjectByKeys(object, keys) {
+  //   return Helpers.getChildObjectByKeys(object, keys)
+  // }
+  // sortNumberArray(array) {
+  //   return Helpers.sortNumberArray(array)
+  // }
+  // sortReverseNumberArray(array) {
+  //   return Helpers.sortReverseNumberArray(array)
+  // }
 
   initializeNextController() {
     this.nextController.init()
@@ -489,17 +492,17 @@ export default class ApplicationController extends Controller {
     element.classList.remove(klass)
   }
 
-  getAttributes(element) {
-    return DomHelpers.getAttributes(element)
-  }
+  // getAttributes(element) {
+  //   return DomHelpers.getAttributes(element)
+  // }
   
-  cloneAttributes(element, refElement) {
-    return DomHelpers.cloneAttributes(element, refElement)
-  }
+  // cloneAttributes(element, refElement) {
+  //   return DomHelpers.cloneAttributes(element, refElement)
+  // }
 
-  createNodeFromHTML(html) {
-    return DomHelpers.createNodeFromHTML(html)
-  }
+  // createNodeFromHTML(html) {
+  //   return DomHelpers.createNodeFromHTML(html)
+  // }
 
   mergeElementWithHTML(element, html) {
     const newNode = this.createNodeFromHTML(html).firstElementChild
@@ -753,3 +756,5 @@ export default class ApplicationController extends Controller {
     }
   }
 }
+
+Object.assign(ApplicationController.prototype, DataHelpers)
