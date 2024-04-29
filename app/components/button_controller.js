@@ -10,6 +10,7 @@ export default class ButtonController extends ApplicationController {
 
   init() {
     // super.initialize()
+    // console.log(this)
     this.initHTML()
     // this.initializeComplete()
   }
