@@ -215,7 +215,11 @@
     <%= editorjs(object_type: 'User') %>
     <%= pincode %>
 
-    <%= tui %>
+    <%
+=begin%>
+ <%= tui %> 
+<%
+=end%>
     <%
 =begin%>
  <%= tui(calendar_schedules: CalendarUser.first.calendar_schedules, calendar_events: (CalendarUser.first.calendar_schedules.map {|schedule| schedule.calendar_events}).flatten) %> 
