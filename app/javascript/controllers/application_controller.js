@@ -1,11 +1,10 @@
-// import * as Helpers from "./helpers"
-import * as DomHelpers from "./dom_helpers"
 import Api from "./api"
 import "axios";
 import { v4 as uuidv4 } from "uuid"
 import { twMerge } from 'tailwind-merge'
 import { Controller } from "@hotwired/stimulus"
 import DataHelpers from "./data_helpers";
+import DomHelpers from "./dom_helpers";
 
 export default class ApplicationController extends Controller {
 
@@ -305,123 +304,9 @@ export default class ApplicationController extends Controller {
     this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rating'), controller: this } } })
   }
 
-  // camelizeParamsValue(object) {
-  //   return Helpers.camelizeParamsValue(object)
-  // }
-
-  // camelCaseForObjectKey(object, except) {
-  //   return Helpers.camelCaseForObjectKey(object, except)
-  // }
-
-  // camelCaseForObjectKeyAndValue(object, except) {
-  //   return Helpers.camelCaseForObjectKeyAndValue(object, except)
-  // }
-
-  // snakeCaseForObjectKey(object, except) {
-  //   return Helpers.snakeCaseForObjectKey(object, except)
-  // }
-
-  // snakeCaseForObjectKeyAndValue(object, except) {
-  //   return Helpers.snakeCaseForObjectKeyAndValue(object, except)
-  // }
-
-  // camelCaseForArray(array, exceptIndex) {
-  //   return Helpers.camelCaseForArray(array, exceptIndex)
-  // }
-
-  // snakeCaseForArray(array, exceptIndex) {
-  //   return Helpers.snakeCaseForArray(array, exceptIndex)
-  // }
-
-  // toSnakeCase(string) {
-  //   return Helpers.toSnakeCase(string)
-  // }
-
-  // toCamelCase(string) {
-  //   return Helpers.toCamelCase(string)
-  // }
-
-  // toPascalCase(string) {
-  //   return Helpers.toPascalCase(string)
-  // }
-
-  // toKebabCase(string) {
-  //   return Helpers.toKebabCase(string)
-  // }
-  // toTitleCase(string) {
-  //   return Helpers.toTitleCase(string)
-  // }
-  // toSentenceCase(string) {
-  //   return Helpers.toSentenceCase(string)
-  // }
-  // convertCase(string, toCase = 'camel') {
-  //   return Helpers.convertCase(string, toCase)
-  // }
-
   twMerge(...args) {
     return twMerge(...args)
   }
-
-  // changeObjectKey(object, oldKey, newKey) {
-  //   return Helpers.changeObjectKey(object, oldKey, newKey)
-  // }
-
-  // deleteObjectKey(object, condition) {
-  //   return Helpers.deleteObjectKey(object, condition)
-  // }
-
-  // objectOnlyKeys(object, keys) {
-  //   return Helpers.objectOnlyKeys(object, keys)
-  // }
-
-  // isObject(x) {
-  //   return Helpers.isObject(x)
-  // }
-
-  // isObjectEmpty(object) {
-  //   return Helpers.isObjectEmpty(object)
-  // }
-
-  // isString(x) {
-  //   return Helpers.isString(x)
-  // }
-
-  // isDefined(x) {
-  //   return Helpers.isDefined(x)
-  // }
-
-  // isUndefined(x) {
-  //   return Helpers.isUndefined(x)
-  // }
-
-  // isArray(x) {
-  //   return Helpers.isArray(x)
-  // }
-
-  // getKeyEndWith(object, string) {
-  //   return Helpers.getKeyEndWith(object, string)
-  // }
-  // isArrayHasNull(array) {
-  //   return Helpers.isArrayHasNull(array)
-  // }
-  // isArraytNull(array) {
-  //   return Helpers.isArraytNull(array)
-  // }
-  // isObjectHasNull(object) {
-  //   return Helpers.isObjectHasNull(object)
-  // }
-  // isObjectNull(object) {
-  //   return Helpers.isObjectNull(object)
-  // }
-  // getChildObjectByKeys(object, keys) {
-  //   return Helpers.getChildObjectByKeys(object, keys)
-  // }
-  // sortNumberArray(array) {
-  //   return Helpers.sortNumberArray(array)
-  // }
-  // sortReverseNumberArray(array) {
-  //   return Helpers.sortReverseNumberArray(array)
-  // }
 
   initializeNextController() {
     this.nextController.init()
@@ -492,18 +377,6 @@ export default class ApplicationController extends Controller {
     element.classList.remove(klass)
   }
 
-  // getAttributes(element) {
-  //   return DomHelpers.getAttributes(element)
-  // }
-  
-  // cloneAttributes(element, refElement) {
-  //   return DomHelpers.cloneAttributes(element, refElement)
-  // }
-
-  // createNodeFromHTML(html) {
-  //   return DomHelpers.createNodeFromHTML(html)
-  // }
-
   mergeElementWithHTML(element, html) {
     const newNode = this.createNodeFromHTML(html).firstElementChild
     this.cloneAttributes(element, newNode)
@@ -517,67 +390,22 @@ export default class ApplicationController extends Controller {
     return !this.isEventDispatch(event)
   }
 
-  demo() {
-    console.log(this)
-  }
-  // get isOpen() {
-  //   return this.paramsValue.isOpen
-  // }
-  // get isFocus() {
-  //   return this.paramsValue.isFocus
-  // }
-  // get isActive() {
-  //   return this.paramsValue.isActive
-  // }
-  // get isHover() {
-  //   return this.paramsValue.isHover
-  // }
-  // get dir() {
-  //   return this.paramsValue.dir || false
-  // }
   get classParams() {
     return this.getKeyEndWith(this.paramsValue, 'lass')
   }
-  // get klass() {
-  //   return this.paramsValue.klass || ''
-  // }
 
-  // get labelClass() {
-  //   return this.paramsValue.labelClass || ''
-  // }
   get id() {
     return this.element.id
   }
-  // get label() {
-  //   return this.paramsValue.label
-  // }
-  // get hasLabel() {
-  //   return typeof this.label !== 'undefined'
-  // }
-  // get isTest() {
-  //   return this.paramsValue.isTest
-  // }
+  
   get eventParams() {
     return this.eventsParams[0]
   }
-  // get events() {
-  //   return this.paramsValue.events || [this.event].flat()
-  // }
-  // get action() {
-  //   return this.paramsValue.action || this.actions?.[0]
-  // }
-  // get actions() {
-  //   return this.paramsValue.actions
-  // }
+  
   get eventIdParams() {
     return  this.eventParams.id
   }
-  // get eventListener() {
-  //   return this.event.listener
-  // }
-  // get eventAction() {
-  //   return this.event.action
-  // }
+
   get eventIdsParams() {
     return this.eventsParams.map((event) => (event.id))
   }
@@ -587,18 +415,14 @@ export default class ApplicationController extends Controller {
   groupOfEvent(event) {
     return event.group || 'global'
   }
-  // isEventListener(event) {
-  //   return event && this.isDefined(this.event.id) && this.isUndefined(this.event.listener) && this.isUndefined(this.event.action)
-  // }
+
   isListenerEvent(event) {
     return event && this.isDefined(event.id) && this.isUndefined(event.listener) && this.isUndefined(event.action)
   }
   get listenerEvents() {
     return this.eventsParams.filter(event => this.isListenerEvent(event))
   }
-  // isEventTrigger(event) {
-  //   return this.isDefined(this.eventId) && this.isDefined(this.eventListener && this.isDefined(this.eventAction))
-  // }
+
   get triggerEvents() {
     return this.events.filter(event => this.isTriggerEvent(event))
   }
@@ -611,33 +435,7 @@ export default class ApplicationController extends Controller {
   get parentControllerElement() {
     return this.element.parentNode.closest('[data-controller]')
   }
-  // get isButtonComponentController() {
-  //   return this.identifier === 'button-component'
-  // }
-  // get parentButtonControllerElement() {
-  //   if (this.element.parentNode.closest('[data-controller]').dataset.controller.includes('button-component')) {
-  //     return this.element.parentNode.closest('[data-controller*="button-component"]')
-  //   } else {
-  //     return false
-  //   }
-  // }
-  // get parentButtonEventId() {
-  //   if (this.parentButtonControllerElement) {
-  //     return JSON.parse(this.parentButtonControllerElement.dataset.buttonComponentParamsValue).events[0].id
-  //   }
-  // }
-  // get label() {
-  //   return this.paramsValue.label
-  // }
-  // get type() {
-  //   return this.paramsValue.type
-  // }
-  // get color() {
-  //   return this.paramsValue.color
-  // }
-  // get variant() {
-  //   return this.paramsValue.variant
-  // }
+  
   get content() {
     return this.element.innerHTML
   }
@@ -735,9 +533,7 @@ export default class ApplicationController extends Controller {
   get isOverideClass() {
     return this.paramsValue.isOverideClass || false
   }
-  // get isShowAfterInitialize() {
-  //   return true
-  // }
+
   get isComponentController() {
     return this.identifier.endWith('-component')
   }
@@ -758,3 +554,4 @@ export default class ApplicationController extends Controller {
 }
 
 Object.assign(ApplicationController.prototype, DataHelpers)
+Object.assign(ApplicationController.prototype, DomHelpers)

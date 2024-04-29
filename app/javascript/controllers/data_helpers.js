@@ -1,9 +1,4 @@
 const DataHelpers = {
-  
-  demo() {
-    console.log('demo')
-  },
-
   camelizeParamsValue(object) {
     let params = object
     params = this.camelCaseForObjectKey(params)
