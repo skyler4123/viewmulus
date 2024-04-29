@@ -26,6 +26,28 @@ export default class ApplicationController extends Controller {
     this.initializeComplete()
   }
 
+  initializeController() {
+    this.element.dataset.controller = this.element.dataset.controller.trim()
+  }
+
+  initializeParams() {
+    Object.keys(this.paramsValue).forEach(key => {
+      this.setParams({name: key})
+    })
+    if (this.isDefined(this.initParams)) { this.initParams() }
+  }
+
+  initializeID() {
+    if (!this.element.id) {
+      this.element.id = `${this.identifier}:${this.newUUID}`
+    }
+  }
+  initializeDir() {
+    if (this.hasDirParams) {
+      this.element.setAttribute('dir', this.dirParams)
+    }
+  }
+  
   initializeComplete() {
     this.initializeClass()
     this.initializeAction()
@@ -122,12 +144,6 @@ export default class ApplicationController extends Controller {
     })
   }
 
-  initializeParams() {
-    Object.keys(this.paramsValue).forEach(key => {
-      this.setParams({name: key})
-    })
-    if (this.isDefined(this.initParams)) { this.initParams() }
-  }
   setParams({name, defaultValue}) {
     this[`${name}Params`] = this.paramsValue[name] || defaultValue
     this[`has${this.toPascalCase(name)}Params`] = true
@@ -135,20 +151,6 @@ export default class ApplicationController extends Controller {
 
   connect() {
     if (this.isTestParams) { console.log(this) }
-  }
-  initializeID() {
-    if (!this.element.id) {
-      this.element.id = `${this.identifier}:${this.newUUID}`
-    }
-  }
-  initializeDir() {
-    if (this.hasDirParams) {
-      this.element.setAttribute('dir', this.dirParams)
-    }
-  }
-
-  initializeController() {
-    this.element.dataset.controller = this.element.dataset.controller.trim()  
   }
 
   initializeAction() {
