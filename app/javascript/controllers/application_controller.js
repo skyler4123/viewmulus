@@ -1,10 +1,11 @@
 import Api from "./api"
 import "axios";
 import { v4 as uuidv4 } from "uuid"
-import { twMerge } from 'tailwind-merge'
 import { Controller } from "@hotwired/stimulus"
 import DataHelpers from "./data_helpers";
 import DomHelpers from "./dom_helpers";
+import DispatchHelpers from "./dispatch_helpers";
+import ControllerHelpers from "./controller_helpers";
 
 export default class ApplicationController extends Controller {
 
@@ -220,174 +221,19 @@ export default class ApplicationController extends Controller {
     })
   }
 
-  toggleDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('toggle'), controller: this } } })
+  startViewTransition(callback) {
+    // if (document.startViewTransition) {
+    //   document.startViewTransition(() => callback())
+    // } else {
+    //   callback()
+    // }
+    callback()
   }
 
-  openDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('open'), controller: this } } })
-  }
 
-  closeDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('close'), controller: this } } })
-  }
-
-  switchDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('switch'), controller: this } } })
-  }
-
-  tabDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tab'), controller: this } } })
-  }
-
-  copyLinkDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('copyLink'), controller: this } } })
-  }
-
-  copyTextDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('copyText'), controller: this } } })
-  }
-
-  scrollBackDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollBack'), controller: this } } })
-  }
-
-  scrollForwardDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollForward'), controller: this } } })
-  }
-
-  scrollForwardAutoDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollForwardAuto'), controller: this } } })
-  }
-
-  rotateDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rotate'), controller: this } } })
-  }
-
-  changeRatioDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('changeRatio'), controller: this } } })
-  }
-
-  tabDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tab'), controller: this } } })
-  }
-
-  tabNextDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabNext'), controller: this } } })
-  }
-
-  tabBackDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabBack'), controller: this } } })
-  }
-
-  tabFirstDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabFirst'), controller: this } } })
-  }
-
-  tabLastDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabLast'), controller: this } } })
-  }
-
-  toggleRememberMeDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('toggleRememberMe'), controller: this } } })
-  }
-
-  increaseDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('increase'), controller: this } } })
-  }
-
-  decreaseDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('decrease'), controller: this } } })
-  }
-
-  ratingDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rating'), controller: this } } })
-  }
-
-  twMerge(...args) {
-    return twMerge(...args)
-  }
 
   initializeNextController() {
     this.nextController.init()
-  }
-
-  findController(controllerName) {
-    const controllerElement = this.findControllerElement(controllerName)
-    if (controllerElement) {
-      let controller = this.application.getControllerForElementAndIdentifier(controllerElement, controllerName)
-      if (!controller) {
-        controller = this.application.getControllerForElementAndIdentifier(controllerElement, `${controllerName}-component`)
-      }
-      return controller
-    }
-  }
-
-  findControllers(controllerName) {
-    const controllerElements = this.findControllerElements(controllerName)
-    let controllers = []
-    if (controllerElements.length > 0) {
-      controllers = Array.from(controllerElements).map((element) => this.application.getControllerForElementAndIdentifier(element, controllerName))
-      if (this.isArraytNull(controllers)) {
-        controllers = Array.from(controllerElements).map((element) => {
-          return this.application.getControllerForElementAndIdentifier(element, `${controllerName}-component`)
-        })
-      }
-      return controllers
-    }
-  }
-
-  findControllerElement(controller) {
-    return this.element.querySelector(`[data-controller*="${controller}"]`)
-  }
-
-  findControllerElements(controller) {
-    return this.element.querySelectorAll(`[data-controller*="${controller}"]`)
-  }
-
-  addAction(element, action) {
-    if (this.isUndefined(element)) { return }
-    element.dataset.action = ((element.dataset.action || '') + ' ' + action).trim()
-  }
-
-  replaceAction(element, oldAction, newAction) {
-    if (this.isUndefined(element)) { return }
-
-    element.dataset.action = element.dataset.action.replace(oldAction, newAction).trim()
-  }
-
-  removeAction(element, action) {
-    if (this.isUndefined(element)) { return }
-
-    this.replaceAction(element, action, '')
-  }
-
-  mergeClass(element, klass) {
-    if (this.isUndefined(element)) { return }
-    if (element.tagName === 'svg') {
-      element.className.baseVal = this.twMerge(element.className.baseVal, klass)
-    } else {
-      element.className = this.twMerge(element.className, klass)
-    }
-  }
-
-  removeClass(element, klass) {
-    if (this.isUndefined(element)) { return }
-
-    element.classList.remove(klass)
-  }
-
-  mergeElementWithHTML(element, html) {
-    const newNode = this.createNodeFromHTML(html).firstElementChild
-    this.cloneAttributes(element, newNode)
-    element.innerHTML = newNode.innerHTML
-  }
-
-  isEventBrowser(event) {
-    return !!event.target
-  }
-  isEventDispatch(event) {
-    return !this.isEventDispatch(event)
   }
 
   get classParams() {
@@ -544,14 +390,10 @@ export default class ApplicationController extends Controller {
     return location.protocol
   }
 
-  startViewTransition(callback) {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => callback())
-    } else {
-      callback()
-    }
-  }
 }
 
 Object.assign(ApplicationController.prototype, DataHelpers)
 Object.assign(ApplicationController.prototype, DomHelpers)
+Object.assign(ApplicationController.prototype, DispatchHelpers)
+Object.assign(ApplicationController.prototype, ControllerHelpers)
+
