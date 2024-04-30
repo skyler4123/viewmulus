@@ -70,9 +70,9 @@ export default class ApplicationController extends Controller {
   }
 
   initializeClass() {
-    this.initializeTypeClass()
     this.initializeVariantClass()
     this.initializePositionClass()
+    this.initializeTypeClass()
     this.initializeCustomClass()
   }
 
@@ -192,45 +192,6 @@ export default class ApplicationController extends Controller {
     }
     if (this.isDefined(this.initAction)) { this.initAction() }
   }
-
-  eventHandler({ detail: { event } }) {
-    if (this.eventIdsParams.includes(event.payload.id) && this.id !== event.payload.controller.id) {
-      this[event.payload.action](event)
-    }
-  }
-
-  toggle(event) {
-    this.isOpenValue = !this.isOpenValue
-  }
-
-  open() {
-    this.isOpenValue = true
-  }
-
-  close() {
-    this.isOpenValue = false
-  }
-
-  isOpenValueChanged(value, previousValue) {
-    this.startViewTransition(() => {
-      if (this.isOpenValue) {
-        this.element.setAttribute('open', '')
-      } else {
-        this.element.removeAttribute('open')
-      }
-    })
-  }
-
-  startViewTransition(callback) {
-    // if (document.startViewTransition) {
-    //   document.startViewTransition(() => callback())
-    // } else {
-    //   callback()
-    // }
-    callback()
-  }
-
-
 
   initializeNextController() {
     this.nextController.init()

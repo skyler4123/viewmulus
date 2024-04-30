@@ -350,6 +350,12 @@
       <% end %>
     </div>
 
+    <%= box(event: { id: new_id, listener: :click, action: :toggle }, klass: 'relative w-1/2 h-[500px] bg-gray-100') do %>
+      <%= popover(event_id: id, position: :mouse) do %>
+        <div class="animate-fade-in bg-red-500">hkj o;o jygn sa</div>
+      <% end %>
+    <% end %>
+
     <div>/</div>
     <div>/</div>
     <div>/</div>

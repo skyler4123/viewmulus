@@ -23,15 +23,28 @@ export default class PopoverController extends ApplicationController {
       this.element.appendChild(picker)
     }
   }
-  get typeClass() {
-    return {
-      mouse: {
-        element: 'open:flex absolute justify-center items-center right-1/2 bottom-0 translate-x-1/2 py-2 mouseeeeeeeeeeeee'
-      }
+
+  toggle(event) {
+    super.toggle(event)
+    if (this.positionParams === 'mouse') {
+      const [clientX, clientY] = this.getClientXYFrom({event: event})
+      this.setStyle({element: this.element, style: `left: ${clientX}px; top: ${clientY}px`})    
     }
   }
+
+  open(event) {
+    super.open(event)
+    if (this.positionParams === 'mouse') {
+      const [clientX, clientY] = this.getClientXYFrom({event: event})
+      this.setStyle({element: this.element, style: `left: ${clientX}px; top: ${clientY}px`})    
+    }
+  }
+
   get positionClass() {
     return {
+      mouse: {
+        element: 'open:flex fixed justify-center items-center py-2'
+      },
       outside: {
         bottomLeft: {
           element: 'open:flex absolute justify-center items-center left-0 bottom-0 translate-y-full py-2',
@@ -106,7 +119,7 @@ export default class PopoverController extends ApplicationController {
         },
         rightCenter: {
           element: 'open:flex absolute justify-center items-center right-0 top-1/2 -translate-y-1/2 px-2',
-        },
+        }
       }
     }
   }
