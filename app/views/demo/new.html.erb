@@ -8,8 +8,7 @@
 <div>/</div>
 
 
-<%= box(event: { id: new_id, listener: :click, action: :toggle }, klass: 'relative w-1/2 h-[500px] bg-gray-100') do %>
-  <%= popover(event_id: id, position: :mouse) do %>
-    <div class="animate-fade-in bg-red-500">hkj o;o jygn sa</div>
-  <% end %>
-<% end %>
+    <%= button(label: 'Press to gray icon and press icon to rotate logo', event: { id: new_id, listener: :click, action: :toggle }) %>
+    <%= box(klass: 'open:bg-gray-200',variant: :only_border, events: [{id: id}, { id: new_id, listener: :click, action: :toggle }], action: {listener: :click, action: :toggle}) do %>
+      <%= icon(type: :logo, name: :github, event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
+    <% end %>
