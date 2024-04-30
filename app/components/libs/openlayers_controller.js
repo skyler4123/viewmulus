@@ -5,6 +5,7 @@ import ApplicationController from '../../javascript/controllers/application_cont
 const Map = openlayers.Map
 const View = openlayers.View
 const Feature = openlayers.Feature
+const Overlay = openlayers.Overlay
 
 const TiltLayer = openlayers.layer.Tile
 const VectorLayer = openlayers.layer.Vector
@@ -21,6 +22,7 @@ const DragAndDrop = openlayers.interaction.DragAndDrop
 const Modify = openlayers.interaction.Modify
 const Draw = openlayers.interaction.Draw
 const Snap = openlayers.interaction.Snap
+const Select = openlayers.interaction.Select
 
 const Style = openlayers.style.Style
 const Stroke = openlayers.style.Stroke
@@ -43,11 +45,12 @@ const fromLonLat = openlayers.proj.fromLonLat
 
 const toStringHDMS = openlayers.coordinate.toStringHDMS
 
-const Overlay = openlayers.Overlay
+const click = openlayers.events.condition.click
+const pointerMove = openlayers.events.condition.pointerMove
 
 
 export default class Openlayers extends ApplicationController {
-  static targets = ['map', 'download', 'clear', 'popupContainer', 'popupCloser', 'popupContent']
+  static targets = ['map', 'download', 'clear', 'input']
 
   get typeClass() {
     return {
@@ -74,7 +77,6 @@ export default class Openlayers extends ApplicationController {
 
   connect() {
 
-    
     const vectorSource = new VectorSource()
     const vectorStyle = new Style({
       stroke: new Stroke({
@@ -107,86 +109,8 @@ export default class Openlayers extends ApplicationController {
       ]
     })
 
-
-
     this.map.addLayer(vectorLayer)
 
-    this.map.addInteraction(
-      new DragAndDrop({
-        source: vectorSource,
-        formatConstructors: [GeoJSON]
-      })
-    )
-
-    // console.log(vectorSource)
-    const iconStyle = new Style({
-      image: new Icon({
-        anchor: [0.5, 46],
-        anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
-        src: 'https://openlayers.org/en/latest/examples/data/icon.png',
-      }),
-    });
-    const iconSource = new VectorSource({
-      features: [
-        new Feature({
-          geometry: new Point(fromLonLat([10, 10])),
-          labelPoint: 'Label Demo',
-          name: "demo name",
-          id: 1,
-        }),
-        new Feature({
-          geometry: new Point(fromLonLat([0, 0])),
-          labelPoint: 'Label Demo',
-          name: "demo name",
-          id: 2,
-        }),
-        new Feature({
-          geometry: new Point(fromLonLat([50, 0])),
-          labelPoint: 'Label Demo',
-          name: "demo name",
-          id: 3,
-        }),
-        new Feature({
-          geometry: new Point([10000000, -1000000]),
-          labelPoint: 'Label Demo',
-          name: "demo name",
-          id: 4,
-        })
-      ]
-    })
-    const iconLayer = new VectorLayer({
-      source: iconSource,
-      style: iconStyle
-    })
-
-    this.map.addLayer(iconLayer)
-    console.log(iconSource)
-
-    // const overlay = new Overlay({
-    //   element: this.popupContainerTarget,
-    //   autoPan: {
-    //     animation: {
-    //       duration: 250,
-    //     },
-    //   },
-    // });
-    // this.popupCloserTarget.onclick = function () {
-    //   overlay.setPosition(undefined);
-    //   this.popupCloserTarget.blur();
-    //   return false;
-    // };
-
-    // this.map.addOverlay(overlay)
-
-    // this.map.on('singleclick', function (evt) {
-    //   const coordinate = evt.coordinate;
-    //   const hdms = toStringHDMS(toLonLat(coordinate));
-    
-    //   this.popupContentTarget.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
-    //   overlay.setPosition(coordinate);
-    // });
-    // console.log(style)
     // this.map.addInteraction(
     //   new Modify({
     //     source: vectorSource,
@@ -205,10 +129,65 @@ export default class Openlayers extends ApplicationController {
     //     source: vectorSource
     //   })
     // )
+    this.map.addInteraction(
+      new DragAndDrop({
+        source: vectorSource,
+        formatConstructors: [GeoJSON]
+      })
+    )
 
+    // const iconStyle = new Style({
+    //   image: new Icon({
+    //     anchor: [0.5, 46],
+    //     anchorXUnits: 'fraction',
+    //     anchorYUnits: 'pixels',
+    //     src: 'https://openlayers.org/en/latest/examples/data/icon.png',
+    //   }),
+    // });
 
+    this.iconSource = new VectorSource({
+      features: [
+        new Feature({
+          geometry: new Point(fromLonLat([10, 10])),
+          labelPoint: 'Label Demo',
+          name: "demo name",
+          id: 1,
+          price: 100
+        }),
+        new Feature({
+          geometry: new Point(fromLonLat([0, 0])),
+          labelPoint: 'Label Demo',
+          name: "demo name",
+          id: 2,
+          price: 223
+        }),
+        new Feature({
+          geometry: new Point(fromLonLat([50, 0])),
+          labelPoint: 'Label Demo',
+          name: "demo name",
+          id: 3,
+          price: 332
+        }),
+        new Feature({
+          geometry: new Point([10000000, -1000000]),
+          labelPoint: 'Label Demo',
+          name: "demo name",
+          id: 4,
+          price: 423
+        }),
+      ]
+    })
+    const iconLayer = new VectorLayer({
+      source: this.iconSource,
+      style: new Style(null)
+      // style: (feature) => {
+      //   if (feature.get('price') > 1000) { return null }
+      //   return this.iconStyle({text: `${feature.get('price')} VND`})
+      //   // return this.iconStyle({text: `${feature.get('price')} VND`})
+      // },
+    })
 
-
+    this.map.addLayer(iconLayer)
 
 
 
@@ -216,7 +195,45 @@ export default class Openlayers extends ApplicationController {
 
   } // connect
 
+  iconStyle({text}) {
+    return new Style({
+      image: new CircleStyle({
+        radius: 10,
+        fill: new Fill({color: 'yellow'}),
+        stroke: new Stroke({color: 'green'}),
+      }),
+      text: new Text({
+        font: '16px sans-serif',
+        text: text,
+        textAlign: 'center',
+        offsetY: -25,
+        fill: new Fill({
+          color: [255, 255, 255, 1],
+        }),
+        backgroundFill: new Fill({
+          color: [168, 50, 153, 0.6],
+        }),
+        padding: [2,2,2,2]
+      })
+    })
+  } 
 
+  input() {
+    const value = this.inputTarget.value
+
+    this.iconSource.forEachFeature(feature => {
+      console.log('---------------------')
+    console.log(feature.get('price') < value)
+    console.log(feature.get('price'))
+
+      if (feature.get('price') < value) {
+        feature.setStyle(this.iconStyle({text: `${feature.get('price')} VND`}))
+      } else {
+        feature.setStyle(null)
+
+      }
+    })
+  }
 }
 
 
