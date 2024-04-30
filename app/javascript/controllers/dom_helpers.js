@@ -17,6 +17,15 @@ const DomHelpers = {
   createNodeFromHTML(html) {
     return document.createRange().createContextualFragment(html)
   },
+
+  getClientXYFrom({event}) {
+    const { clientX, clientY } = event
+    return [clientX, clientY]
+  },
+
+  setStyle({element, style}) {
+    element.style = style
+  }
 }
 
 export default DomHelpers;

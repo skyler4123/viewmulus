@@ -1,87 +1,108 @@
 const DispatchHelpers = {
 
   toggleDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('toggle'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('toggle'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   openDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('open'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('open'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   closeDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('close'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('close'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   switchDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('switch'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('switch'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tab'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tab'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   copyLinkDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('copyLink'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('copyLink'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   copyTextDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('copyText'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('copyText'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   scrollBackDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollBack'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('scrollBack'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   scrollForwardDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollForward'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('scrollForward'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   scrollForwardAutoDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('scrollForwardAuto'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('scrollForwardAuto'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   rotateDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rotate'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('rotate'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   changeRatioDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('changeRatio'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('changeRatio'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tab'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tab'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabNextDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabNext'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tabNext'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabBackDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabBack'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tabBack'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabFirstDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabFirst'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tabFirst'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   tabLastDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('tabLast'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('tabLast'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   toggleRememberMeDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('toggleRememberMe'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('toggleRememberMe'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   increaseDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('increase'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('increase'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   decreaseDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('decrease'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('decrease'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 
   ratingDispatch(event) {
-    this.dispatch('dispatch', { detail: { event: { ...this.getEventWithAction('rating'), controller: this } } })
+    event['payload'] = { ...this.getEventWithAction('rating'), controller: this }
+    this.dispatch('dispatch', { detail: { event: event } })
   },
 }
 

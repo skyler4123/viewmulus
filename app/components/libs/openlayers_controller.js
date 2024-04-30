@@ -220,12 +220,7 @@ export default class Openlayers extends ApplicationController {
 
   input() {
     const value = this.inputTarget.value
-
     this.iconSource.forEachFeature(feature => {
-      console.log('---------------------')
-    console.log(feature.get('price') < value)
-    console.log(feature.get('price'))
-
       if (feature.get('price') < value) {
         feature.setStyle(this.iconStyle({text: `${feature.get('price')} VND`}))
       } else {

@@ -12,7 +12,7 @@ export default class PopoverController extends ApplicationController {
   }
 
   initParams() {
-    this.setParams({name: 'position', defaultValue: ['outside', 'bottomCenter']})
+    this.setParams({name: 'position', defaultValue: ['inside', 'bottomCenter']})
     this.setParams({name: 'isShowAfterInitialize', defaultValue: false})
   }
 
@@ -23,7 +23,13 @@ export default class PopoverController extends ApplicationController {
       this.element.appendChild(picker)
     }
   }
-
+  get typeClass() {
+    return {
+      mouse: {
+        element: 'open:flex absolute justify-center items-center right-1/2 bottom-0 translate-x-1/2 py-2 mouseeeeeeeeeeeee'
+      }
+    }
+  }
   get positionClass() {
     return {
       outside: {
@@ -102,7 +108,6 @@ export default class PopoverController extends ApplicationController {
           element: 'open:flex absolute justify-center items-center right-0 top-1/2 -translate-y-1/2 px-2',
         },
       }
-
     }
   }
 

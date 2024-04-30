@@ -194,8 +194,8 @@ export default class ApplicationController extends Controller {
   }
 
   eventHandler({ detail: { event } }) {
-    if (this.eventIdsParams.includes(event.id) && this.id !== event.controller.id) {
-      this[event.action](event)
+    if (this.eventIdsParams.includes(event.payload.id) && this.id !== event.payload.controller.id) {
+      this[event.payload.action](event)
     }
   }
 
