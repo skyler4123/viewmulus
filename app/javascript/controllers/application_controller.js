@@ -19,21 +19,15 @@ export default class ApplicationController extends Controller {
   }
 
   initialize({controllerIndex = 0} = {}) {
-    let delayInitializeTime = 0;
-    if (this.isFirstController && this.hasChildrenController) {
-      delayInitializeTime = 500
+    if (controllerIndex != this.controllerIndex) { return }
+    this.paramsValue = this.camelizeParamsValue(this.paramsValue)
+    this.initializeParams()
+    if (this.isFirstController) {
+      this.initializeID()
+      this.initializeDir()
     }
-    setTimeout(() => {
-      if (controllerIndex != this.controllerIndex) { return }
-      this.paramsValue = this.camelizeParamsValue(this.paramsValue)
-      this.initializeParams()
-      if (this.isFirstController) {
-        this.initializeID()
-        this.initializeDir()
-      }
-      if (this.isDefined(this.init)) { this.init() }
-      this.initializeComplete()
-    }, delayInitializeTime)
+    if (this.isDefined(this.init)) { this.init() }
+    this.initializeComplete()
   }
 
   initializeController() {
