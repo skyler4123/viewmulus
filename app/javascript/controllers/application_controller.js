@@ -21,7 +21,7 @@ export default class ApplicationController extends Controller {
   initialize({controllerIndex = 0} = {}) {
     if (controllerIndex != this.controllerIndex) { return }
     this.paramsValue = this.camelizeParamsValue(this.paramsValue)
-    this.initializeController()
+    // this.initializeController()
     this.initializeParams()
     if (this.isFirstController) {
       this.initializeID()
@@ -58,7 +58,9 @@ export default class ApplicationController extends Controller {
     this.initializeAction()
     this.initializeShow()
     this.isInitializedValue = true
-    this.initializeNextController()
+    if (!this.isLastController) {
+      this.initializeNextController()
+    }
   }
 
   initializeShow() {
@@ -198,7 +200,9 @@ export default class ApplicationController extends Controller {
   }
 
   initializeNextController() {
-    this.nextController && this.nextController.initialize({ controllerIndex: this.controllerIndex + 1 })
+    setTimeout(() => {
+      this.nextController.initialize({ controllerIndex: this.controllerIndex + 1 })
+    }, 500)
   }
 
   get classParams() {
@@ -302,27 +306,29 @@ export default class ApplicationController extends Controller {
   }
 
   get isFirstController() {
-    return this.identifier === this.controllerNames[0]
+    return this.controllerIndex === 0
   }
 
   get isLastController() {
-    return this.identifier === this.controllerNames[this.controllerMaxIndex]
+    return this.controllerIndex === this.controllerMaxIndex
   }
 
   get nextController() {
-    if (this.controllerIndex === this.controllerMaxIndex) {
-      return null
-    } else {
-      return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex + 1])
-    }
+    // if (this.controllerIndex === this.controllerMaxIndex) {
+    //   return null
+    // } else {
+    //   return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex + 1])
+    // }
+    return this.controllers[this.controllerIndex + 1]
   }
   
   get previousController() {
-    if (this.controllerIndex === 0) {
-      return null
-    } else {
-      return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex - 1])
-    }
+    // if (this.controllerIndex === 0) {
+    //   return null
+    // } else {
+    //   return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex - 1])
+    // }
+    return this.controllers[this.controllerIndex + 1]
   }
 
   get dataAction() {

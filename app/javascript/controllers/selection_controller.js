@@ -15,11 +15,12 @@ export default class SelectionController extends ApplicationController {
   }
 
   init() {
-    console.log(this)
+    // console.log(this)
     this.initTarget()
   }
 
   initTarget() {
+    console.log(this.element.children)
     Array.from(this.element.children).forEach((target, index) => {
       target.setAttribute(`data-${this.identifier}-target`, 'item')
       target.setAttribute('data-action', `click->${this.identifier}#select`)
