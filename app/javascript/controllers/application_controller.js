@@ -14,10 +14,12 @@ export default class ApplicationController extends Controller {
     isOpen: { type: Boolean },
     isFocus: { type: Boolean },
     isActive: { type: Boolean },
-    isHover: { type: Boolean }
+    isHover: { type: Boolean },
+    isInitialized: { type: Boolean },
   }
 
-  initialize() {
+  initialize({controllerIndex = 0} = {}) {
+    if (controllerIndex != this.controllerIndex) { return }
     this.paramsValue = this.camelizeParamsValue(this.paramsValue)
     this.initializeController()
     this.initializeParams()
@@ -55,6 +57,8 @@ export default class ApplicationController extends Controller {
     this.initializeClass()
     this.initializeAction()
     this.initializeShow()
+    this.isInitializedValue = true
+    this.initializeNextController()
   }
 
   initializeShow() {
@@ -99,7 +103,6 @@ export default class ApplicationController extends Controller {
       let targetsWithClasses = this.getChildObjectByKeys(this.variantClass, [this.variantParams].flat())
       Object.keys(targetsWithClasses).forEach((targetString) => {
         if (targetString === 'element') {
-          console.log('kjhkjhjkhjkhkj')
           this.mergeClass(this.element, targetsWithClasses[targetString])
         } else {
           const target = targetString.replace('Target', '')
@@ -195,7 +198,7 @@ export default class ApplicationController extends Controller {
   }
 
   initializeNextController() {
-    this.nextController.init()
+    this.nextController && this.nextController.initialize({ controllerIndex: this.controllerIndex + 1 })
   }
 
   get classParams() {
