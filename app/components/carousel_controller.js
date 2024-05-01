@@ -24,7 +24,7 @@ export default class CarouselController extends ApplicationController {
     })
   }
   initAction() {
-    this.element.dataset.action = (this.element.dataset.action || "") + ` wheel->${this.identifier}#scroll:passive`
+    // this.element.dataset.action = (this.element.dataset.action || "") + ` wheel->${this.identifier}#scroll:passive`
     if (this.hasTimeIntervalParams) {
       this.intervalIdValue = setInterval(() => { this.scrollNext() }, this.timeIntervalParams)
     }
