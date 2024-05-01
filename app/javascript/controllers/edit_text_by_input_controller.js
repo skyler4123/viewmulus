@@ -17,7 +17,6 @@ export default class EditTextByInput extends ApplicationController {
   }
 
   init() {
-    console.log(this)
     this.initTarget()
     useClickOutside(this, { element: this.inputTarget })
   }

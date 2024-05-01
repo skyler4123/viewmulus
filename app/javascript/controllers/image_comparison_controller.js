@@ -18,19 +18,17 @@ export default class extends ApplicationController {
   }
 
   init() {
-    // super.init()
+    console.log(this)
     this.initTarget()
-    // this.initComplete()
   }
 
   initTarget() {
-    this.firstRatioControllerElement.setAttribute(`data-${this.identifier}-target`, 'firstRatio')
-    this.lastRatioControllerElement.setAttribute(`data-${this.identifier}-target`, 'lastRatio')
-    this.inputControllerElement.setAttribute(`data-${this.identifier}-target`, 'input')
+    this.firstRatioController.element.setAttribute(`data-${this.identifier}-target`, 'firstRatio')
+    this.lastRatioController.element.setAttribute(`data-${this.identifier}-target`, 'lastRatio')
+    this.inputController.element.setAttribute(`data-${this.identifier}-target`, 'input')
   }
 
   initAction() {
-    // super.initAction()
     this.addAction(this.inputTarget, `input->${this.identifier}#input`)
   }
 
@@ -45,18 +43,8 @@ export default class extends ApplicationController {
     this.lastRatioController.ratioValue = this.ratioValue
   }
 
-
-  get ratioControllerElements() {
-    return this.findControllerElements('ratio')
-  }
-  get firstRatioControllerElement() {
-    return this.ratioControllerElements[0]
-  }
-  get lastRatioControllerElement() {
-    return this.ratioControllerElements[1]
-  }
   get ratioControllers() {
-    return this.findControllers('ratio')
+    return this.getChildrenControllersFromIdentifier('ratio')
   }
   get firstRatioController() {
     return this.ratioControllers[0]
@@ -64,10 +52,7 @@ export default class extends ApplicationController {
   get lastRatioController() {
     return this.ratioControllers[1]
   }
-  get inputControllerElement() {
-    return this.findControllerElement('input')
-  }
   get inputController() {
-    return this.findController('input')
+    return this.getChildrenControllerFromIdentifier('input')
   }
 }

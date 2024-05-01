@@ -8,7 +8,6 @@ export default class RatioController extends ApplicationController {
   }
 
   init() {
-    this.initValue()
     this.initHTML()
     this.initTarget()
   }

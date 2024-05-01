@@ -19,7 +19,6 @@ export default class extends ApplicationController {
   }
 
   init() {
-    console.log(this)
     this.initTarget()
     useClickOutside(this, { element: this.inputTarget })
   }

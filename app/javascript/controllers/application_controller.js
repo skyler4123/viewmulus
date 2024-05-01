@@ -19,15 +19,21 @@ export default class ApplicationController extends Controller {
   }
 
   initialize({controllerIndex = 0} = {}) {
-    if (controllerIndex != this.controllerIndex) { return }
-    this.paramsValue = this.camelizeParamsValue(this.paramsValue)
-    this.initializeParams()
-    if (this.isFirstController) {
-      this.initializeID()
-      this.initializeDir()
+    let delayInitializeTime = 0;
+    if (this.isFirstController && this.hasChildrenController) {
+      delayInitializeTime = 500
     }
-    if (this.isDefined(this.init)) { this.init() }
-    this.initializeComplete()
+    setTimeout(() => {
+      if (controllerIndex != this.controllerIndex) { return }
+      this.paramsValue = this.camelizeParamsValue(this.paramsValue)
+      this.initializeParams()
+      if (this.isFirstController) {
+        this.initializeID()
+        this.initializeDir()
+      }
+      if (this.isDefined(this.init)) { this.init() }
+      this.initializeComplete()
+    }, delayInitializeTime)
   }
 
   initializeController() {
@@ -303,6 +309,16 @@ export default class ApplicationController extends Controller {
     return resultController
   }
 
+  getChildrenControllersFromIdentifier(identifier) {
+    let resultControllers = []
+    this.childrenControllers.forEach(controller => {
+      if (controller.identifier === identifier) {
+        resultControllers.push(controller)
+      }
+    })
+    return resultControllers
+  }
+
   getIdentifierFromElements(element = this.element) {
     return element.dataset.controller.split(' ')
   }
@@ -311,6 +327,9 @@ export default class ApplicationController extends Controller {
     return this.getIdentifierFromElements(element)[0]
   }
 
+  get hasChildrenController() {
+    return this.childrenControllerElements.length > 0
+  }
 
   get firstController() {
     return this.controllers[0]

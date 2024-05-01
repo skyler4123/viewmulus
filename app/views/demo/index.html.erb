@@ -262,10 +262,10 @@
       <div><%= input %></div>
     <% end %>
 
-    <%= box(controller: 'search') do %>
-      <%= input(placeholder: 'acb...xyz', url: 'https://jsonplaceholder.typicode.com/users', auto_submit: true) %>
+    <%= box(controller: 'search', klass: 'w-full h-40 bg-gray-100') do %>
+      <%= input(placeholder: 'acb...xyz', url: 'https://jsonplaceholder.typicode.com/users', is_auto_submit: true) %>
       <%= button(label: 'Search') %>
-      <%= popover do %>
+      <%= popover(variant: [:outside, :bottom_center]) do %>
         <p>Response from BE</p>
       <% end %>
     <% end %>
