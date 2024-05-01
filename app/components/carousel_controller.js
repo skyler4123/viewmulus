@@ -43,16 +43,6 @@ export default class CarouselController extends ApplicationController {
     return this.element.scrollWidth / this.carouselCount
   }
 
-  // scroll() {
-  //   if (this.element.scrollLeft === 0) {
-  //     this.scrollBack()
-  //   }
-  //   if ((this.element.scrollLeft + this.element.offsetWidth + 1) > this.element.scrollWidth) {
-  //     this.scrollNext()
-  //   }
-
-  // }
-
   scrollBack() {
     this.indexValue -= 1
   }
