@@ -225,7 +225,8 @@ const DataHelpers = {
   
   getChildObjectByKeys(object, keys) {
     let value = object
-    keys.forEach((key) => {
+    let digArray = [keys].flat()
+    digArray.forEach((key) => {
       value = value[key]
     })
     return value
@@ -345,6 +346,10 @@ const DataHelpers = {
   
   isNumberOrNumberString(x) {
     return this.isNumber(x) || this.isNumberString(x)
+  },
+
+  dig({object, digArray}) {
+    return this.getChildObjectByKeys(object, digArray)
   },
 }
 

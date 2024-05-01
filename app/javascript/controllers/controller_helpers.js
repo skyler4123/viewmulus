@@ -32,6 +32,19 @@ const ControllerHelpers = {
     })
   },
 
+  getTargetIndex({targets, target}) {
+    let resultIndex;
+    targets.forEach((element, index) => {
+      if (element.id === target.id) { resultIndex = index }
+    })
+    return resultIndex
+  },
+
+  getTargetIndexFromEvent({event, targets}) {
+    console.log(event)
+    return this.getTargetIndex({ targets: targets, target: event.currentTarget })
+  },
+
   startViewTransition(callback) {
     // if (document.startViewTransition) {
     //   document.startViewTransition(() => callback())
