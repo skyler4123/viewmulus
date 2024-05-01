@@ -283,6 +283,35 @@ export default class ApplicationController extends Controller {
     return controllers
   }
 
+  get childrenControllerElements() {
+    return this.element.querySelectorAll('[data-controller]')
+  }
+
+  get childrenControllers() {
+    return Array.from(this.childrenControllerElements).map(element => {
+      return this.application.getControllerForElementAndIdentifier(element, this.getIdentifierFromElement(element))
+    })
+  }
+
+  getChildrenControllerFromIdentifier(identifier) {
+    let resultController
+    this.childrenControllers.forEach(controller => {
+      if (controller.identifier === identifier) {
+        resultController = controller
+      }
+    })
+    return resultController
+  }
+
+  getIdentifierFromElements(element = this.element) {
+    return element.dataset.controller.split(' ')
+  }
+
+  getIdentifierFromElement(element = this.element) {
+    return this.getIdentifierFromElements(element)[0]
+  }
+
+
   get firstController() {
     return this.controllers[0]
   }

@@ -79,7 +79,7 @@ const ControllerHelpers = {
     }
   },
 
-  findControlerByIdentifier(identifier) {
+  getControlerByIdentifier(identifier) {
     return this.controllers.filter((controller) => controller.identifier === identifier)
   },
 
