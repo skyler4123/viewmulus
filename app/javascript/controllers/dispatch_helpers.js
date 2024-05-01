@@ -40,13 +40,13 @@ const DispatchHelpers = {
     this.dispatch('dispatch', { detail: { event: event } })
   },
 
-  scrollForwardDispatch(event) {
-    event['payload'] = { ...this.getEventWithAction('scrollForward'), controller: this }
+  scrollNextDispatch(event) {
+    event['payload'] = { ...this.getEventWithAction('scrollNext'), controller: this }
     this.dispatch('dispatch', { detail: { event: event } })
   },
 
-  scrollForwardAutoDispatch(event) {
-    event['payload'] = { ...this.getEventWithAction('scrollForwardAuto'), controller: this }
+  scrollNextAutoDispatch(event) {
+    event['payload'] = { ...this.getEventWithAction('scrollNextAuto'), controller: this }
     this.dispatch('dispatch', { detail: { event: event } })
   },
 

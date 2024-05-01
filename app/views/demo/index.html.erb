@@ -67,7 +67,7 @@
     <% end %>
 
     <%= button(label: 'Scroll Back', event: { id: new_id, listener: :click, action: :scroll_back }) %>
-    <%= button(label: 'Scroll Forward', event: { id: id, listener: :click, action: :scroll_forward }) %>
+    <%= button(label: 'Scroll Next', event: { id: id, listener: :click, action: :scroll_next }) %>
     
     <%= carousel(event: { id: id }) do %>
       <div>
