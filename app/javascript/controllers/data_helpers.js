@@ -253,6 +253,12 @@ const DataHelpers = {
     return s.slice(0, 1).toLowerCase() + s.slice(1);
   },
   
+  toCamelCaseForArray(array) {
+    return array.map(element => {
+      return this.toCamelCase(element)
+    })
+  },
+
   toPascalCase(str) {
     if (this.isNumberOrNumberString(str)) { return str }
     return str
@@ -261,6 +267,12 @@ const DataHelpers = {
       .join('');
   },
   
+  toPascalCaseForArray(array) {
+    return array.map(element => {
+      return this.toPascalCase(element)
+    })
+  },
+
   toKebabCase(str) {
     if (this.isNumberOrNumberString(str)) { return str }
     return str &&
@@ -269,7 +281,13 @@ const DataHelpers = {
       .map(x => x.toLowerCase())
       .join('-');
   },
-  
+
+  toKebabCaseForArray(array) {
+    return array.map(element => {
+      return this.toKebabCase(element)
+    })
+  },
+
   toSnakeCase(str) {
     if (this.isNumberOrNumberString(str)) { return str }
     return str &&
@@ -277,9 +295,14 @@ const DataHelpers = {
         .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
         .map(x => x.toLowerCase())
         .join('_');
-  
   },
   
+  toSnakeCaseForArray(array) {
+    return array.map(element => {
+      return this.toSnakeCase(element)
+    })
+  },
+
   toTitleCase(str) {
     if (this.isNumberOrNumberString(str)) { return str }
     return str

@@ -28,8 +28,8 @@
     <%= icon %>
 
     <%= tab(controller: :darkmode) do |c| %>
-      <div><%= icon(name: "moon", klass: 'w-5 h-5 fill-blue-950') %></div>
-      <div><%= icon(name: "sun", klass: 'w-5 h-5') %></div>
+      <div><%= icon(variant: [:outline, :moon], klass: 'w-5 h-5 fill-blue-950') %></div>
+      <div><%= icon(variant: [:outline, :sun], klass: 'w-5 h-5') %></div>
     <% end %>
 
     <div data-controller="darkmode">darkmode</div>
@@ -42,7 +42,7 @@
 
     <%= button(label: 'Press to gray icon and press icon to rotate logo', event: { id: new_id, listener: :click, action: :toggle }) %>
     <%= box(klass: 'open:bg-gray-200',variant: :only_border, events: [{id: id}, { id: new_id, listener: :click, action: :toggle }], action: {listener: :click, action: :toggle}) do %>
-      <%= icon(type: :logo, name: :github, event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
+      <%= icon(variant: [:logo, :github], event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
     <% end %>
 
     <%= button(label: 'Test Variant') %>
@@ -103,7 +103,7 @@
 
     <%= button(label: 'Press to rotate Icon', event: { id: new_id, listener: :click, action: :open }) %>
     <%= icon(event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
-    <%= icon(type: :logo, name: :github, event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
+    <%= icon(variant: [:logo, :github], event: { id: id }, klass: "w-10 h-10 open:rotate-180 duration-1000 ease-out") %>
 
     <%= button(label: 'Press to rotate Img', event: { id: new_id, listener: :click, action: :open }) %>
     <%= img(event: { id: id }, klass: "w-40 h-40 open:animate-spin", url: "https://picsum.photos/1000/1000") %>
@@ -142,11 +142,11 @@
     <%= button(label: "Tab to 4rd Item", event: { id: id, action: :tab, value: 4, listener: :click }) %>
     <%= button(event: { id: id, action: :tab_next, listener: :click }) do %>
       <%= tab(event: { id: id }) do |c| %>
-        <div><%= icon(name: "link") %></div>
-        <div><%= icon(name: "check-circle", klass: "w-5 h-6 text-green-500") %></div>
-        <div><%= icon(name: "spinner", type: :animation) %></div>
-        <div><%= icon(name: "star", klass: "w-5 h-6 text-sky-800") %></div>
-        <div><%= icon(name: "sun", klass: "w-5 h-6 text-yellow-500") %></div>
+        <div><%= icon(variant: [:outline, :link]) %></div>
+        <div><%= icon(variant: [:outline, 'check-circle'], klass: "w-5 h-6 text-green-500") %></div>
+        <div><%= icon(variant: [:animation, :spinner]) %></div>
+        <div><%= icon(variant: [:outline, :star], klass: "w-5 h-6 text-sky-800") %></div>
+        <div><%= icon(variant: [:outline, :sun], klass: "w-5 h-6 text-yellow-500") %></div>
       <% end %>
     <% end %>
 
