@@ -79,13 +79,17 @@ const ControllerHelpers = {
     }
   },
 
-  findControllerElement(controller) {
-    return this.element.querySelector(`[data-controller*="${controller}"]`)
+  findControlerByIdentifier(identifier) {
+    return this.controllers.filter((controller) => controller.identifier === identifier)
   },
 
-  findControllerElements(controller) {
-    return this.element.querySelectorAll(`[data-controller*="${controller}"]`)
-  },
+  // findControllerElement(controller) {
+  //   return this.element.querySelector(`[data-controller*="${controller}"]`)
+  // },
+
+  // findControllerElements(controller) {
+  //   return this.element.querySelectorAll(`[data-controller*="${controller}"]`)
+  // },
 
   addAction(element, action) {
     if (this.isUndefined(element)) { return }

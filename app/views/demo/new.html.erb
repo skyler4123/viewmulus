@@ -8,10 +8,7 @@
 <div>/</div>
 
 
-    <%= box(is_test: true, controller: 'selection') do %>
-      <%= icon %>
-      <%= icon %>
-      <%= icon %>
-      <%= icon %>
-      <%= icon %>
+    <%= tab(controller: 'edit-text-by-input') do %>
+      <div><%= text(label: 'Double click to edit')%></div>
+      <div><%= input %></div>
     <% end %>

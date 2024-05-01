@@ -21,7 +21,6 @@ export default class ApplicationController extends Controller {
   initialize({controllerIndex = 0} = {}) {
     if (controllerIndex != this.controllerIndex) { return }
     this.paramsValue = this.camelizeParamsValue(this.paramsValue)
-    // this.initializeController()
     this.initializeParams()
     if (this.isFirstController) {
       this.initializeID()
@@ -283,12 +282,14 @@ export default class ApplicationController extends Controller {
     })
     return controllers
   }
+
   get firstController() {
     return this.controllers[0]
   }
   get lastController() {
     return this.controllers[this.controllers.length - 1]
   }
+
   get controllerSize() {
     return this.controllerNames.length
   }
@@ -314,20 +315,10 @@ export default class ApplicationController extends Controller {
   }
 
   get nextController() {
-    // if (this.controllerIndex === this.controllerMaxIndex) {
-    //   return null
-    // } else {
-    //   return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex + 1])
-    // }
     return this.controllers[this.controllerIndex + 1]
   }
   
   get previousController() {
-    // if (this.controllerIndex === 0) {
-    //   return null
-    // } else {
-    //   return this.application.getControllerForElementAndIdentifier(this.element, this.controllerNames[this.controllerIndex - 1])
-    // }
     return this.controllers[this.controllerIndex + 1]
   }
 
