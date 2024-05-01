@@ -25,7 +25,11 @@ const DomHelpers = {
 
   setStyle({element, style}) {
     element.style = style
-  }
+  },
+
+  get csrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').content
+  },
 }
 
 export default DomHelpers;

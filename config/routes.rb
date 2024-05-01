@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # get 'demo/index'
   # get 'demo/new'
   resources :demo, only: [:index, :new]
-  post 'images/upload_by_file'
-  post 'images/upload_by_url'
+  post 'images/editorjs_upload_by_file'
+  post 'images/editorjs_upload_by_url'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
