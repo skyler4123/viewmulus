@@ -77,6 +77,8 @@ Rails.application.configure do
 
 
 
+
+  # Custom configurations
   config.importmap.cache_sweepers << Rails.root.join("app/components")
   config.assets.debug = true
 

@@ -23,6 +23,14 @@ module Viewmulus
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
+
+
+
+
+
+    # Custom configurations
     config.assets.paths << Rails.root.join('app')
     config.generators.orm :active_record, primary_key_type: :uuid
   end
