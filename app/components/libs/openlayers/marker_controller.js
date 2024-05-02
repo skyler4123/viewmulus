@@ -107,10 +107,13 @@ export default class MarkerController extends ApplicationController {
     })
     this.iconStyle = new Style({
       image: new Icon({
-        anchor: [0.5, 46],
+        anchor: [0.5, 850],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        src: 'https://openlayers.org/en/latest/examples/data/icon.png',
+        // src: 'https://openlayers.org/en/latest/examples/data/icon.png',
+        src: 'https://www.svgrepo.com/show/13654/placeholder.svg',
+        scale: 0.03
+
       }),
     })
 
