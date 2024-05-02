@@ -250,29 +250,6 @@ export default class ApplicationController extends Controller {
   }
 
   initializeNextController() {
-    // if (this.nextController) {
-    //   this.nextController.initialize({isPreviousControllerInitialized: true})
-    // } else {
-    //   this.intervalInitializeNextControllerNumber = setInterval(() => {
-    //     if (this.canEscapeInterval) {
-    //       clearInterval(this.intervalInitializeNextControllerNumber)
-    //       return
-    //     }
-
-    //     if (this.nextController) {
-    //       clearInterval(this.intervalInitializeNextControllerNumber)
-    //     } else {
-    //       this.nextController.initialize({isPreviousControllerInitialized: true})
-    //     }
-    //   }, 100)
-    // }
-    console.log(this.nextController)
-    // setTimeout(() => {
-    //   this.nextController.initialize({isPreviousControllerInitialized: true})
-    // }, 500)
-
-
-
     if (this.nextController) {
       this.nextController.initialize({isPreviousControllerInitialized: true})
     } else {
