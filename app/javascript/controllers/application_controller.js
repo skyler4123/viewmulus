@@ -267,20 +267,26 @@ export default class ApplicationController extends Controller {
     //   }, 100)
     // }
     console.log(this.nextController)
-    setTimeout(() => {
-      // this.nextController.initialize({ controllerIndex: this.controllerIndex + 1 })
-      console.log(this.element)
-      this.nextController.initialize({isPreviousControllerInitialized: true})
-    }, 500)
-  }
+    // setTimeout(() => {
+    //   this.nextController.initialize({isPreviousControllerInitialized: true})
+    // }, 500)
 
-  get canEscapeInterval() {
-    this.intervalTime ||= 0
-    if (this.intervalTime > 10 ) {
-      return true
+
+
+    if (this.nextController) {
+      this.nextController.initialize({isPreviousControllerInitialized: true})
     } else {
-      this.intervalTime += 1
-      return false
+      this.intervalTime = 0
+      this.intervalId = setInterval(() => {
+        this.intervalTime += 1
+        if (this.intervalTime > 10) {
+          clearInterval(this.intervalId)
+          console.log('Can not find the controller! Are you sue it is correct controller?')
+          return
+        } 
+        this.nextController.initialize({isPreviousControllerInitialized: true})
+        clearInterval(this.intervalId)
+      }, 1000)  
     }
   }
 

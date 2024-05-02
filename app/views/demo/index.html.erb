@@ -287,6 +287,14 @@
       <%= icon %>
     <% end %>
 
+    <%= box(controller: 'wrong') do %>
+      <%= icon %>
+      <%= icon %>
+      <%= icon %>
+      <%= icon %>
+      <%= icon %>
+    <% end %>
+
     <div data-controller="image-comparison" class="relative w-[1536px] h-[854px]">
       <%= ratio(event_id: id, klass: 'w-[1536px] h-[854px]') do %>
         <img class="object-cover object-left h-full w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg">
