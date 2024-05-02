@@ -23,6 +23,24 @@ const DomHelpers = {
     return [clientX, clientY]
   },
 
+  getLayerXYFrom({event}) {
+    const { layerX, layerY } = event
+    return [layerX, layerY]
+  },
+
+  getOffsetXYFrom({event}) {
+    const { offsetX, offsetY } = event
+    return [offsetX, offsetY]
+  },
+
+  getPageXYFrom({event}) {
+    const { pageX, pageY } = event
+    return [pageX, pageY]
+  },
+  getScreenXYFrom({event}) {
+    const { screenX, screenY } = event
+    return [screenX, screenY]
+  },
   setStyle({element, style}) {
     element.style = style
   },

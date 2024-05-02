@@ -27,8 +27,8 @@ export default class PopoverController extends ApplicationController {
   toggle(event) {
     super.toggle(event)
     if (this.positionParams === 'mouse') {
-      const [clientX, clientY] = this.getClientXYFrom({event: event})
-      this.setStyle({element: this.element, style: `left: ${clientX}px; top: ${clientY}px`})    
+      const [offsetX, offsetY] = this.getOffsetXYFrom({event: event})
+      this.setStyle({element: this.element, style: `left: ${offsetX}px; top: ${offsetY}px`})    
     }
   }
 
@@ -43,7 +43,7 @@ export default class PopoverController extends ApplicationController {
   get positionClass() {
     return {
       mouse: {
-        element: 'open:flex fixed justify-center items-center py-2'
+        element: 'open:flex absolute justify-center items-center py-2'
       },
       outside: {
         bottomLeft: {
