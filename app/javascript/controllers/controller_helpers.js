@@ -83,14 +83,6 @@ const ControllerHelpers = {
     return this.controllers.filter((controller) => controller.identifier === identifier)
   },
 
-  // findControllerElement(controller) {
-  //   return this.element.querySelector(`[data-controller*="${controller}"]`)
-  // },
-
-  // findControllerElements(controller) {
-  //   return this.element.querySelectorAll(`[data-controller*="${controller}"]`)
-  // },
-
   addAction(element, action) {
     if (this.isUndefined(element)) { return }
     element.dataset.action = ((element.dataset.action || '') + ' ' + action).trim()
