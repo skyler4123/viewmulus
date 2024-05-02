@@ -16,6 +16,17 @@ export default class Editorjs extends ApplicationController {
   static values = {
     ...super.values,
   }
+  initParams() {
+    this.setParams({name: 'variant', defaultValue: 'default'})
+  }
+
+  get variantClass() {
+    return {
+      default: {
+        element: 'w-full h-[350px]'
+      }
+    }
+  }
   connect() {
     this.editorJS = new EditorJS({
       holder: this.holderTarget,
