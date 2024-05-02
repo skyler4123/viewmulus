@@ -287,13 +287,17 @@
       <%= icon %>
     <% end %>
 
-    <%= box(controller: 'wrong') do %>
+    <%
+=begin%>
+ <%= box(controller: 'wrong') do %>
       <%= icon %>
       <%= icon %>
       <%= icon %>
       <%= icon %>
       <%= icon %>
-    <% end %>
+    <% end %> 
+<%
+=end%>
 
     <div data-controller="image-comparison" class="relative w-[1536px] h-[854px]">
       <%= ratio(event_id: id, klass: 'w-[1536px] h-[854px]') do %>
