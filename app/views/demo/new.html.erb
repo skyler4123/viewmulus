@@ -7,15 +7,4 @@
 <div>/</div>
 <div>/</div>
 
-
-    <div data-controller="image-comparison" class="relative w-[1536px] h-[854px]">
-      <%= ratio(klass: 'w-[1536px] h-[854px]') do %>
-        <img class="object-cover object-left h-full w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg">
-      <% end %>
-
-      <%= ratio(dir: :rtl, is_reverse: true, klass: 'absolute inset-0 w-[1536px] h-[854px]') do %>
-        <img class="object-cover object-left rtl:object-right h-full w-full blur-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg">
-      <% end %>
-
-      <%= input(type: :comparison) %>
-    </div>
+    <%= pincode %>

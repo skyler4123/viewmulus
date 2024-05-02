@@ -52,13 +52,16 @@ export default class Pincode extends ApplicationController {
     this.indexValue = this.indexValue - 1
   }
 
+
   indexValueChanged(value, previousValue) {
-    if (previousValue === undefined || previousValue === '') { return }
+    if (!this.isInitializedValue) { return }
 
     this.cellTargets[this.indexValue].focus()
   }
 
   inputValueChanged() {
+    if (!this.isInitializedValue) { return }
+    
     this.inputTarget.value = this.inputValue
   }
 
