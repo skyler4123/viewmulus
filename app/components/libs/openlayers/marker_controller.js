@@ -125,7 +125,6 @@ export default class MarkerController extends ApplicationController {
     this.map.addLayer(this.iconLayer)
 
     this.map.on('singleclick', (event) => {
-      console.log(event)
       const newIcon = new Feature({
         geometry: new Point(event.coordinate),
         labelPoint: 'Label Demo',
