@@ -29,7 +29,7 @@ export default class TabController extends ApplicationController {
   // }
 
   tab(event) {
-    this.tabIndexValue = event.value
+    this.tabIndexValue = event.payload.value
   }
 
   tabToIndex(index) {

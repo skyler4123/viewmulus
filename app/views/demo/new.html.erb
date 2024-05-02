@@ -7,4 +7,5 @@
 <div>/</div>
 <div>/</div>
 
-<%= openlayers %>
+    <%= button(label: "Test Button", event: { action: :change_ratio, value: 95, listener: :click, id: new_id }) %>
+    <%= ratio(is_test: true, is_show_ratio: true, type: :progress_bar, ratio: 45, event: { id: id }, ratio_class: 'bg-green-500') %>
