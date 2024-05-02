@@ -128,6 +128,37 @@ const ControllerHelpers = {
     return !this.isEventDispatch(event)
   },
 
+  getChildrenControllerFromIdentifier(identifier) {
+    let resultController
+    this.childrenControllers.forEach(controller => {
+      if (controller.identifier === identifier) {
+        resultController = controller
+      }
+    })
+    return resultController
+  },
+
+  getChildrenControllersFromIdentifier(identifier) {
+    let resultControllers = []
+    this.childrenControllers.forEach(controller => {
+      if (controller.identifier === identifier) {
+        resultControllers.push(controller)
+      }
+    })
+    return resultControllers
+  },
+
+  getIdentifierFromElements(element = this.element) {
+    return element.dataset.controller.split(' ')
+  },
+
+  getIdentifierFromElement(element = this.element) {
+    return this.getIdentifierFromElements(element)[0]
+  },
+
+  getEventWithAction(action) {
+    return this.eventsParams.find(event => event.action === action)
+  },
 }
 
 export default ControllerHelpers;

@@ -306,9 +306,7 @@ export default class ApplicationController extends Controller {
   isTriggerEvent(event) {
     return event && this.isDefined(event.id) && this.isDefined(event.listener) && this.isDefined(event.action)
   }
-  getEventWithAction(action) {
-    return this.eventsParams.find(event => event.action === action)
-  }
+
   get parentControllerElement() {
     return this.element.parentNode.closest('[data-controller]')
   }
@@ -356,33 +354,7 @@ export default class ApplicationController extends Controller {
     })
   }
 
-  getChildrenControllerFromIdentifier(identifier) {
-    let resultController
-    this.childrenControllers.forEach(controller => {
-      if (controller.identifier === identifier) {
-        resultController = controller
-      }
-    })
-    return resultController
-  }
-
-  getChildrenControllersFromIdentifier(identifier) {
-    let resultControllers = []
-    this.childrenControllers.forEach(controller => {
-      if (controller.identifier === identifier) {
-        resultControllers.push(controller)
-      }
-    })
-    return resultControllers
-  }
-
-  getIdentifierFromElements(element = this.element) {
-    return element.dataset.controller.split(' ')
-  }
-
-  getIdentifierFromElement(element = this.element) {
-    return this.getIdentifierFromElements(element)[0]
-  }
+  
 
   get hasChildrenController() {
     return this.childrenControllerElements.length > 0
