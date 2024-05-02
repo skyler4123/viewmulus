@@ -11,14 +11,13 @@
 </div> */}
 
 import ApplicationController from './application_controller'
-export default class extends ApplicationController {
+export default class ImageComparisonCOntroller extends ApplicationController {
   static targets = ['firstRatio', 'lastRatio', 'input']
   static values = {
-    ratio: { type: Number, default: 50 }
+    ratio: { type: Number }
   }
 
   init() {
-    console.log(this)
     this.initTarget()
   }
 
@@ -36,8 +35,14 @@ export default class extends ApplicationController {
     this.ratioValue = this.inputTarget.value
   }
 
+  isInitializedValueChanged(value, previousValue) {
+    if (this.isInitializedValue) {
+      this.ratioValue = 50
+    }
+  }
+
   ratioValueChanged(value, previousValue) {
-    if (previousValue === undefined) { return }
+    if (!this.isInitializedValue) { return }
 
     this.firstRatioController.ratioValue = this.ratioValue
     this.lastRatioController.ratioValue = this.ratioValue

@@ -15,11 +15,22 @@ export default class ApplicationController extends Controller {
     isFocus: { type: Boolean },
     isActive: { type: Boolean },
     isHover: { type: Boolean },
-    isInitialized: { type: Boolean },
+    isInitialized: { type: Boolean, default: false },
   }
 
-  initialize({controllerIndex = 0} = {}) {
-    if (controllerIndex != this.controllerIndex) { return }
+  initialize({isPreviousControllerInitialized = false} = {}) {
+    if (!this.canInitialize(isPreviousControllerInitialized)) { return }
+    if (this.isBasicController) {
+      this.functionsForInitialize()
+    } else {
+      setTimeout(() => {
+        this.functionsForInitialize()
+      }, 0)
+    }
+
+  }
+
+  functionsForInitialize() {
     this.paramsValue = this.camelizeParamsValue(this.paramsValue)
     this.initializeParams()
     if (this.isFirstController) {
@@ -28,6 +39,12 @@ export default class ApplicationController extends Controller {
     }
     if (this.isDefined(this.init)) { this.init() }
     this.initializeComplete()
+  }
+
+  canInitialize(isPreviousControllerInitialized) {
+    if (this.isFirstController) { return true }
+    if (isPreviousControllerInitialized) { return true }
+    return false
   }
 
   initializeController() {
@@ -57,9 +74,43 @@ export default class ApplicationController extends Controller {
     this.initializeAction()
     this.initializeShow()
     this.isInitializedValue = true
-    if (!this.isLastController) {
-      this.initializeNextController()
+  }
+
+  isInitializedValueChanged(value, previousValue) {
+    if (this.isInitializedValue) {
+      if (!this.isLastController) {
+        this.initializeNextController()
+      }
     }
+  }
+
+  get getBasicControllerIdentifiers() {
+    return [
+      'accordion',
+      'box',
+      'button',
+      'carousel',
+      'hr',
+      'icon',
+      'img',
+      'input',
+      'link',
+      'list',
+      'mockup',
+      'modal',
+      'popover',
+      'ratio',
+      'select',
+      'skeleton',
+      'tab',
+      'table',
+      'text',
+      'toast',
+      'video'
+    ]
+  }
+  get isBasicController() {
+    return this.getBasicControllerIdentifiers.includes(this.identifier)
   }
 
   initializeShow() {
