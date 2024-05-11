@@ -1,5 +1,3 @@
-import Api from "./api"
-import "axios";
 import { v4 as uuidv4 } from "uuid"
 import { Controller } from "@hotwired/stimulus"
 import DataHelpers from "./data_helpers";
@@ -327,12 +325,7 @@ export default class ApplicationController extends Controller {
   get Api() {
     return Api
   }
-  get Axios() {
-    return axios
-  }
-  get axios() {
-    return axios
-  }
+
   get controllerNames() {
     return this.element.dataset.controller.trim().split(' ')
   }
