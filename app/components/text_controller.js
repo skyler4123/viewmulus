@@ -1,4 +1,4 @@
-// import hljs from "highlight.js";
+import { HighlightJS } from "highlight.js"
 import ApplicationController from "../javascript/controllers/application_controller";
 import Dictionary from "../javascript/controllers/dictionary";
 
@@ -18,9 +18,6 @@ export default class TextController extends ApplicationController {
   initParams() {
     this.setParams({name: 'codeLanguage', defaultValue: 'erb'})
     this.setParams({name: 'language', defaultValue: 'english'})
-    this.setParams({name: 'codeLanguage', defaultValue: 'erb'})
-    this.setParams({name: 'codeLanguage', defaultValue: 'erb'})
-
   }
 
   initValue() {
@@ -33,6 +30,7 @@ export default class TextController extends ApplicationController {
       this.element.innerHTML = this.typeHTML.code
       this.codeTarget.textContent = this.labelValue
       this.element.insertAdjacentHTML('beforeend', this.typeHTML.copyCode)
+      HighlightJS.highlightElement(this.codeTarget)
     } else {
       this.element.innerText = this.labelValue
     }
@@ -119,7 +117,7 @@ export default class TextController extends ApplicationController {
       copyCode: `
         <div class="hidden absolute top-2 right-2" data-controller="button " data-button-params-value="{&quot;events&quot;:[{&quot;id&quot;:&quot;${this.eventIdParams}&quot;,&quot;listener&quot;:&quot;click&quot;,&quot;action&quot;:&quot;copy_text&quot;},{&quot;id&quot;:&quot;${this.eventIdParams + 'toggle'}&quot;,&quot;listener&quot;:&quot;click&quot;,&quot;action&quot;:&quot;tab_next&quot;}]}">
           <button data-button-target="button">
-            <div class="hidden" data-controller="tab " data-tab-params-value="{&quot;event_id&quot;:&quot;${this.eventIdParams + 'toggle'}&quot;,&quot;is_restore&quot;:true,&quot;klass&quot;:&quot;rounded-md text-white w-20 py-1 flex justify-center&quot;}">
+            <div class="hidden" data-controller="tab" data-tab-params-value="{&quot;event_id&quot;:&quot;${this.eventIdParams + 'toggle'}&quot;,&quot;is_restore&quot;:true,&quot;klass&quot;:&quot;rounded-md text-white w-20 py-1 flex justify-center&quot;}">
               <div class="" data-controller="text " data-text-params-value="{&quot;label&quot;:&quot;Copy&quot;}">
                 <div data-text-target="text"></div>
               </div>

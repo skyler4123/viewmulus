@@ -38,3 +38,4 @@ pin "openlayers" # @4.6.5
 pin "emoji-mart" # @5.5.2
 pin "colormap" # @2.3.2
 pin "lerp" # @1.0.3
+pin "highlight.js", to: "https://ga.jspm.io/npm:highlight.js@11.4.0/es/index.js"
