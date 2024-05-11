@@ -82,7 +82,6 @@ export default class TabController extends ApplicationController {
   }
 
   restore({timeout = 3000, index = 0}) {
-    console.log(timeout)
     setTimeout(() => {
       this.tabIndexValue = index
     }, timeout)
