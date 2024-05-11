@@ -7,7 +7,27 @@
 <div>/</div>
 <div>/</div>
 
-<%= text(type: :code, klass: "w-full", label: @sample_erb_code, event_id: 'copy_code_id') %>
+
+
+
+
+
+
+
+<%= tab(action: { listener: :click, action: :tab_next }) do |c| %>
+  <div>
+    <%= button(label: 'Copy', variant: :pill, klass: "bg-transparent text-black") %>
+  </div>
+  <div>
+    <%= button(label: 'Copied', variant: :pill, klass: "bg-gray-300") %>
+  </div>
+<% end %>
+
+<div data-controller="hello"></div>
+
+
+
+
 
 
 
