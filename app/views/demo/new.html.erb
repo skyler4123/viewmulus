@@ -8,10 +8,7 @@
 <div>/</div>
 
 
-    <%= box(controller: 'floating-label', klass: '') do %>
-      <%= text(type: :label, label: 'Test Floating Label') %>
-      <%= input(klass: '') %>
-    <% end %>
+      <%= text(type: :label, label: 'Test Floating Label', data: {'controller1-target' => 'target1', controller2_target: :target2}) %>
 
 
 
