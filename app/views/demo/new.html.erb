@@ -10,32 +10,8 @@
 
 
 
-    <%= tab(controller: 'edit-text-by-input') do %>
-      <div><%= text(label: 'Text need edit', target: {'edit-text-by-input' => 'text'})%></div>
-      <div><%= input(target: {'edit-text-by-input' => 'input'}) %></div>
-    <% end %>
+<%= text(label: 'Text need edit', data: {edit_text_by_input_target: 'text_input', 'controller-2' => 'demo'}) %>
 
-    <%
-=begin%>
- <%= text(type: :code, klass: "w-full", label: @sample_erb_code) %> 
-<%
-=end%>
-
-
-<%
-=begin%>
- <%= tab(action: { listener: :click, action: :tab_next }) do |c| %>
-  <div>
-    <%= button(label: 'Copy', variant: :pill, klass: "bg-transparent text-black") %>
-  </div>
-  <div>
-    <%= button(label: 'Copied', variant: :pill, klass: "bg-gray-300") %>
-  </div>
-<% end %>
-
-<div data-controller="hello"></div> 
-<%
-=end%>
 
 
 
