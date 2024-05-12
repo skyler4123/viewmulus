@@ -8,9 +8,9 @@
 <div>/</div>
 
 
-    <%= tab(controller: 'edit-text-by-input') do %>
-      <div><%= text(label: 'Text need edit')%></div>
-      <div><%= input %></div>
+    <%= box(controller: 'floating-label', klass: '') do %>
+      <%= text(type: :label, label: 'Test Floating Label') %>
+      <%= input(klass: '') %>
     <% end %>
 
 
