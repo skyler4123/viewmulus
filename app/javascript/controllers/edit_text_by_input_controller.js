@@ -20,11 +20,6 @@ export default class EditTextByInput extends ApplicationController {
     this.initTarget()
     useClickOutside(this, { element: this.inputTarget })
   }
-
-  // connect() {
-  //   super.connect()
-  //   useClickOutside(this, { element: this.inputTarget })
-  // }
   
   initTarget() {
     this.textControllerElement.setAttribute(`data-${this.identifier}-target`, 'text')
@@ -33,7 +28,7 @@ export default class EditTextByInput extends ApplicationController {
 
   initAction() {
     this.addAction(this.textTarget, `dblclick->${this.identifier}#tabToInput`)
-    this.addAction(this.textinputTargetTarget, `input->${this.identifier}#inputFitContent`)
+    this.addAction(this.inputTarget, `input->${this.identifier}#inputFitContent`)
   }
 
   clickOutside(event) {
