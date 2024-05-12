@@ -8,11 +8,10 @@
 <div>/</div>
 
 
-
-
-<%= text(label: 'Text need edit', data: {edit_text_by_input_target: 'text_input', 'controller-2' => 'demo'}) %>
-
-
+    <%= tab(controller: 'edit-text-by-input') do %>
+      <div><%= text(label: 'Text need edit')%></div>
+      <div><%= input %></div>
+    <% end %>
 
 
 

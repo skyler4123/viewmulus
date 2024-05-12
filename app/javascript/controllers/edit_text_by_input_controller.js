@@ -27,13 +27,13 @@ export default class EditTextByInput extends ApplicationController {
   // }
   
   initTarget() {
-    this.textController.element.setAttribute(`data-${this.identifier}-target`, 'text')
-    this.inputController.element.setAttribute(`data-${this.identifier}-target`, 'input')
+    this.textControllerElement.setAttribute(`data-${this.identifier}-target`, 'text')
+    this.inputControllerElement.setAttribute(`data-${this.identifier}-target`, 'input')
   }
 
   initAction() {
-    this.textTarget.dataset.action = (this.textTarget.dataset.action || '') + ` dblclick->${this.identifier}#tabToInput`
-    this.inputTarget.dataset.action = (this.inputTarget.dataset.action || '') + ` input->${this.identifier}#inputFitContent`
+    this.addAction(this.textTarget, `dblclick->${this.identifier}#tabToInput`)
+    this.addAction(this.textinputTargetTarget, `input->${this.identifier}#inputFitContent`)
   }
 
   clickOutside(event) {
